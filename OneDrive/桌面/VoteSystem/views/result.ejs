@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <style>
+        #abc {margin-left: 20px; color: rgb(0, 102, 255);}
+    </style>
+    <title>Programming Vote</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  </head>
+    <body>
+                <div class="page-header">
+                <h3>Which programing language(s) do you know? (Select all that apply)</h3>
+                </div>
+                <h4> <div id="abc">
+                <ol>
+                    <li>JavaScript - <%- Message[0] %> votes </li> 
+                    <li>Python - <%- Message[1] %> votes </li>
+                    <li>PHP - <%- Message[2] %> votes </li>
+                    <li>C# - <%- Message[3] %> votes </li>
+                    <li>None of the above - <%- Message[4] %> votes </li>
+                </ol>
+                </div>
+    </body>
+</html>

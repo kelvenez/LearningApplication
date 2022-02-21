@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <style>
+        #abc {margin-left: 20px; color: rgb(0, 102, 255);}
+    </style>
+    <title>Programming Vote</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  </head>
+    <body>
+                <div class="page-header">
+                <h3>Which programing language(s) do you know? (Select all that apply)</h3>
+                </div>
+                <form id="form" method="post" action="./views/index.ejs"> 
+                <h4> <div id="abc">
+                <input type="checkbox" id="JS" name="options" value="JS" >
+                <label for="JS"> JavaScript</label><br>
+                <input type="checkbox" id="Python" name="options" value="Python">
+                <label for="Python"> Python</label><br>
+                <input type="checkbox" id="PHP" name="options" value="PHP">
+                <label for="PHP"> PHP</label><br>
+                <input type="checkbox" id="C#" name="options" value="C#">
+                <label for="C#"> C#</label><br>
+                <input type="checkbox" id="None" name="options" value="None">
+                <label for="None"> None of the above</label><br>
+                </div>
+                <center><input type="submit" value="submit" class="btn btn-primary"></center>
+
+            </form>
+    </body>
+    <script>   
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            const formJSON = Object.fromEntries(data.entries());
+            formJSON.options = data.getAll('options');
+            if(formJSON.options.length == 0)
+                alert("Please select at least one option");
+            else
+                console.log(formJSON);
+          }
+            const form = document.querySelector('form');
+            form.addEventListener('submit', handleFormSubmit); 
+    </script>
+
+</html>
