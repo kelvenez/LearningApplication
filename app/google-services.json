@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "982842872863",
+    "project_id": "findspapp",
+    "storage_bucket": "findspapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982842872863:android:1c66c9816d964c0de9b12a",
+        "android_client_info": {
+          "package_name": "com.example.studytoworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982842872863-gd6bd3ds8u2vre0bm4vf0muikb5174q4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_wxbv74t-UwqKUgzJuyjdSwFbXj49vs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982842872863-gd6bd3ds8u2vre0bm4vf0muikb5174q4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
