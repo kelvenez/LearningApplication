@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.text.TextUtils;
 import android.content.Intent;
@@ -19,10 +20,10 @@ import com.google.android.gms.tasks.Task;
 
 
 public class Register extends AppCompatActivity {
-    private EditText emailTextView, passwordTextView ,lastnameTextView , firstnameTextView;
+    private EditText emailTextView, passwordTextView ,lastnameTextView , firstnameTextView ;
     private Button Btn;
     private FirebaseAuth mAuth;
-
+    private TextView createdAccountTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,13 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         // taking FirebaseAuth instance
         mAuth = FirebaseAuth.getInstance();
+        createdAccountTextView = findViewById(R.id.already);
         // initialising all views through id defined above
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.passwd);
         lastnameTextView = findViewById(R.id.LastName);
         firstnameTextView = findViewById(R.id.firstName);
+        createdAccountTextView = findViewById(R.id.already);
         Btn = findViewById(R.id.btnregister);
         // Set on Click Listener on Registration button
         Btn.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +46,20 @@ public class Register extends AppCompatActivity {
                 registerNewUser();
             }
         });
+
+        createdAccountTextView.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent
+                        = new Intent(Register.this,Login.class);
+                startActivity(intent);
+            }
+        }));
+
+
+
     }
+
 
     private void registerNewUser() {
 
@@ -88,8 +104,7 @@ public class Register extends AppCompatActivity {
                             //progressBar.setVisibility(View.GONE);
                             // if the user created intent to login activity
                             Intent intent
-                                    = new Intent(Register.this,
-                                    MainActivity.class);
+                                    = new Intent(Register.this,Login.class);
                             startActivity(intent);
                         }
                         else {
