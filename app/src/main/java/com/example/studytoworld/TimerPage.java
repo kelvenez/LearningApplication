@@ -1,5 +1,9 @@
 package com.example.studytoworld;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,15 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-
+import java.util.Timer;
 import java.util.TimerTask;
 
-public class Timer {
+public class TimerPage extends AppCompatActivity {
+
     TextView timerText;
     Button startStopButton;
 
-    java.util.Timer timer;
+    Timer timer;
     TimerTask timerTask;
     Double time = 0.0;
 
@@ -29,7 +33,7 @@ public class Timer {
         timerText = (TextView) findViewById(R.id.timerText);
         startStopButton = (Button) findViewById(R.id.startStopButton);
 
-        timer = new java.util.Timer();
+        timer = new Timer();
     }
 
     public void resetTapped(View view){
