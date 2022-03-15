@@ -197,9 +197,10 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update"
+                android:background="#fece2f"
                 android:fontFamily="@font/aclonica"
-                android:background="#fece2f"/>
+                android:onClick="update"
+                android:text="Update" />
 
         </LinearLayout>
     </LinearLayout>
