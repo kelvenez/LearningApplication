@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_edit_user_profile.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_login.xml" value="0.176" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_main.xml" value="0.10277777777777777" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.22521808088818399" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.186" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_icon.xml" value="0.1875" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1875" />
