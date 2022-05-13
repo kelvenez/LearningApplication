@@ -11,9 +11,9 @@ public class DAOtable {
         databaseReference = db.getReference(table.class.getName());
     }
 
-    public Task<Void> add(table table){
-        databaseReference.push().setValue(table.getTableID());
-    }
+    //public Task<Void> add(table table){
+    //    databaseReference.push().setValue(table.getTableID());
+    //}
 
 
 }
