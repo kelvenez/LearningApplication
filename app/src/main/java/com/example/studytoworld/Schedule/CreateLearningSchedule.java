@@ -3,9 +3,15 @@ package com.example.studytoworld.Schedule;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,7 +23,11 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.studytoworld.AlarmReceiver;
+import com.example.studytoworld.MainActivity;
 import com.example.studytoworld.R;
+import com.example.studytoworld.databinding.ActivityCreateLearningScheduleBinding;
+import com.example.studytoworld.databinding.ActivityMainBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,9 +40,13 @@ import java.util.Locale;
 
 public class CreateLearningSchedule extends AppCompatActivity {
     private EditText dateTextView;
+    private Calendar timeCalendar;
     private EditText timeTextView;
     private DatePickerDialog picker;
     private Button create;
+    private ActivityCreateLearningScheduleBinding binding;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
     String subject;
     int day;
     int month;
@@ -45,7 +59,18 @@ public class CreateLearningSchedule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_learning_schedule);
+        //setContentView(R.layout.activity_create_learning_schedule);
+
+        binding = ActivityCreateLearningScheduleBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        createNotificationChannel();
+
+        binding.createSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         dateTextView = findViewById(R.id.date);
         timeTextView = findViewById(R.id.time);
@@ -57,10 +82,10 @@ public class CreateLearningSchedule extends AppCompatActivity {
         dateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar calender = Calendar.getInstance();
-                day = calender.get(Calendar.DAY_OF_MONTH);
-                month = calender.get(Calendar.MONTH);
-                year = calender.get(Calendar.YEAR);
+                final Calendar calendar = Calendar.getInstance();
+                day = calendar.get(Calendar.DAY_OF_MONTH);
+                month = calendar.get(Calendar.MONTH);
+                year = calendar.get(Calendar.YEAR);
 
                 //Date Picker Dialog
                 picker = new DatePickerDialog(CreateLearningSchedule.this, new DatePickerDialog.OnDateSetListener() {
@@ -87,6 +112,20 @@ public class CreateLearningSchedule extends AppCompatActivity {
                 createSchedule();
             }
         });
+    }
+
+    private void createNotificationChannel() {
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "StudyToWorldReminderChannel";
+            String description = "Channel For Alarm Manager";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("StudyToWorld", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     private void createSchedule() {
@@ -140,7 +179,19 @@ public class CreateLearningSchedule extends AppCompatActivity {
 
             }
         });
+        //notification
+        setAlarm();
 
+    }
+
+    private void setAlarm() {
+        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent (this, AlarmReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(this,0,intent,0);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,timeCalendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        Toast.makeText(this, "Alarm set Successfully", Toast.LENGTH_SHORT).show();
     }
 
     public void popTimePicker(View view) {
@@ -150,6 +201,12 @@ public class CreateLearningSchedule extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 timeTextView.setText(String.format(Locale.getDefault(),"%02d:%02d", hour,minute));
+
+                timeCalendar = Calendar.getInstance();
+                timeCalendar.set(Calendar.HOUR_OF_DAY,hour);
+                timeCalendar.set(Calendar.MINUTE,minute);
+                timeCalendar.set(Calendar.SECOND,0);
+                timeCalendar.set(Calendar.MILLISECOND,0);
             }
         };
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, hour , minute, true);
