@@ -21,7 +21,6 @@
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src=""
                 android:layout_centerVertical="true"/>
 
             <TextView
@@ -69,7 +68,6 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src=""
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/payment_label"
@@ -108,7 +106,6 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src=""
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/booking_label"
@@ -139,18 +136,17 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:layout_marginBottom="10dp">
-
-            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft=""
-                android:drawablePadding="10dp"
-                android:text="Jeffre Fan"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="Full Name"
+                android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:text="Jeffre Fan"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -161,7 +157,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft=""
                     android:drawablePadding="10dp"
                     android:text="abc@com"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -175,7 +170,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft=""
                     android:drawablePadding="10dp"
                     android:text="+852-12345678"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -189,7 +183,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft=""
                     android:drawablePadding="10dp"
                     android:text="12345678"/>
             </com.google.android.material.textfield.TextInputLayout>
