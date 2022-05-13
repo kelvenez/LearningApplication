@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    tools:context=".EditUserProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,48 +14,37 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="#fece2f"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:background="#fece2f">
 
             <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true"
+                 />
 
             <TextView
                 android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile_image"
+                android:text="Jeffrey Fan"
+                android:textSize="20sp"
                 android:fontFamily="@font/aclonica"
+                android:layout_toRightOf="@+id/profile_image"
+                android:layout_centerVertical="true"
                 android:includeFontPadding="false"
-                android:textSize="20sp" />
+                android:layout_marginLeft="10dp"/>
 
             <TextView
-                android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/profile_image"
-                android:fontFamily="@font/aclonica"
+                android:text="jeffrey_fan"
                 android:includeFontPadding="false"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/profile_image"
                 android:layout_below="@+id/first_name"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/profile_image"
-                android:includeFontPadding="false"
-                android:textSize="14sp" />
-
+                android:layout_marginLeft="10dp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -80,6 +69,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/payment_label"
@@ -118,6 +108,7 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+
                         android:layout_centerHorizontal="true"/>
                     <TextView
                         android:id="@+id/booking_label"
@@ -147,44 +138,46 @@
             android:padding="20dp"
             android:orientation="vertical">
 
+            <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:layout_marginBottom="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/firstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawablePadding="10dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name"
+                android:hint="Last Name"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/LastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="Jeffre Fan"/>
+
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail"
+                android:hint="Email"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="abc@com"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:layout_marginBottom="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="+852-12345678"/>
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -194,18 +187,21 @@
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/passwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="12345678"/>
+
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="Edit"
-                android:text="Edit profile" />
+                android:background="#fece2f"
+                android:fontFamily="@font/aclonica"
+                android:onClick="update"
+                android:text="Update" />
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
