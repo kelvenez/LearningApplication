@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    tools:context=".EditUserProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                  />
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jeffrey Fan"
@@ -43,7 +43,7 @@
                 android:includeFontPadding="false"
                 android:textSize="14sp"
                 android:layout_toRightOf="@+id/profile_image"
-                android:layout_below="@+id/full_name"
+                android:layout_below="@+id/first_name"
                 android:layout_marginLeft="10dp"/>
         </RelativeLayout>
 
@@ -141,7 +141,7 @@
             <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="First Name"
             android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -155,7 +155,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="E-mail"
+                android:hint="Last Name"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -169,7 +169,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone Number"
+                android:hint="Email"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText

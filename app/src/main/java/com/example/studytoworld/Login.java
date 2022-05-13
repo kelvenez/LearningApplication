@@ -3,6 +3,7 @@ package com.example.studytoworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -14,6 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Login extends AppCompatActivity {
@@ -24,6 +31,9 @@ public class Login extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+
+    private String firstNameFromDB, lastNameFromDB, emailFromDB, passwordFromDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,15 +101,23 @@ public class Login extends AppCompatActivity {
                                             Toast.LENGTH_LONG)
                                             .show();
 
+                                    getUserInfo(password);
+                                    //Intent intent1 = new Intent(Login.this, UserProfile.class);
+                                    //intent1.putExtra("email",emailFromDB);
+                                    //intent1.putExtra("password", passwordFromDB);
+                                    //intent1.putExtra("firstName",firstNameFromDB);
+                                    //intent1.putExtra("lastName",lastNameFromDB);
+
                                     // hide the progress bar
                                     // progressBar.setVisibility(View.GONE); #later design
 
                                     // if sign-in is successful
                                     // intent to home activity
-                                    Intent intent
-                                            = new Intent(Login.this,
-                                            MainActivity.class);
-                                    startActivity(intent);
+
+                                    //Intent intent
+                                    //         = new Intent(Login.this,
+                                    //        MainActivity.class);
+                                    //startActivity(intent1);
                                 }
 
                                 else {
@@ -115,5 +133,42 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                         });
+    }
+
+    private void getUserInfo(String password){
+        Query checkUser = reference.orderByChild("password").equalTo(password);
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    firstNameFromDB = snapshot.child(password).child("first_name").getValue(String.class);
+                    lastNameFromDB = snapshot.child(password).child("last_name").getValue(String.class);
+                    emailFromDB = snapshot.child(password).child("email").getValue(String.class);
+                    passwordFromDB = snapshot.child(password).child("password").getValue(String.class);
+
+                    Intent intent1 = new Intent(Login.this, MainActivity.class);
+                    intent1.putExtra("email",emailFromDB);
+                    intent1.putExtra("password", passwordFromDB);
+                    intent1.putExtra("firstName",firstNameFromDB);
+                    intent1.putExtra("lastName",lastNameFromDB);
+
+                    // hide the progress bar
+                    // progressBar.setVisibility(View.GONE); #later design
+
+                    // if sign-in is successful
+                    // intent to home activity
+
+                    //Intent intent
+                    //         = new Intent(Login.this,
+                    //        MainActivity.class);
+                    startActivity(intent1);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
