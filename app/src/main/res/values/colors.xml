@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#ff3b30</color>
     <color name="green">#34c759</color>
+    <color name="darkGrey">#333533</color>
+    <color name="lightGrey">#EEE</color>
 </resources>

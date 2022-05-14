@@ -146,7 +146,7 @@ public class Login extends AppCompatActivity {
                     emailFromDB = snapshot.child(password).child("email").getValue(String.class);
                     passwordFromDB = snapshot.child(password).child("password").getValue(String.class);
 
-                    Intent intent1 = new Intent(Login.this, UserProfile.class);
+                    Intent intent1 = new Intent(Login.this, MainActivity.class);
                     intent1.putExtra("email",emailFromDB);
                     intent1.putExtra("password", passwordFromDB);
                     intent1.putExtra("firstName",firstNameFromDB);
