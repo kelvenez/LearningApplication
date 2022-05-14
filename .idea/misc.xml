@@ -5,10 +5,13 @@
       <map>
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1335" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1335" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24.xml" value="0.317" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1335" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/rounded_button.xml" value="0.2515" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_create_learning_schedule.xml" value="0.42604166666666665" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_login.xml" value="0.3269927536231884" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_main.xml" value="0.3269927536231884" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_music_player.xml" value="0.2692502532928065" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_musicplay.xml" value="0.23860182370820668" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_prelogin.xml" value="0.5" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_register.xml" value="0.3269927536231884" />

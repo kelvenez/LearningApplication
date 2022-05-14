@@ -34,6 +34,10 @@
             android:name=".EditUserProfile"
             android:exported="true" />
         <activity
+            android:name=".MusicPlay"
+            android:exported="true" />
+        <activity android:name=".MusicPlayerActivity"></activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

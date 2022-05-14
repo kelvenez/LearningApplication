@@ -11,12 +11,13 @@ import android.os.Bundle;
 
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
+import com.example.studytoworld.MusicPlay;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton table1 ,newPopUp_cancel;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private Button schedule;
+    private Button schedule, bg_music;
     private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         table1 = findViewById(R.id.table1);
         schedule = findViewById(R.id.schedule);
+        bg_music = findViewById(R.id.music_button);
         table1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){moveToSchedulePage();}
         });
-
+        bg_music.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){moveToMusicPage();}
+        });
     }
 
     private void moveToSchedulePage() {
@@ -44,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent1 = new Intent(MainActivity.this, LearningSchedule.class);
         intent1.putExtra("password", password);
         startActivity(intent1);
+    }
+
+    private void moveToMusicPage() {
+        Intent intent = getIntent();
+        password = intent.getStringExtra("password");
+
+        Intent intent2 = new Intent(MainActivity.this, MusicPlay.class);
+        startActivity(intent2);
     }
 
     private void createNewTableDiaglog(){
