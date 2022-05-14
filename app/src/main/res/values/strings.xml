@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">StudyToWorld</string>
-    <string name="google_map_key" translatable="false">AIzaSyB7tikjpqp148N24_LCsOJip4faDKjJq9Y</string>
+    <string name="google_map_key" translatable="false">map key</string>
 
 </resources>
