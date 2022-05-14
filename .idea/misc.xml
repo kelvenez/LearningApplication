@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1335" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1335" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1335" />
@@ -19,6 +20,28 @@
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/recycler_item.xml" value="0.2966485507246377" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_login.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_register.xml" value="0.22" />
+=======
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_create_learning_schedule.xml" value="0.1" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_edit_user_profile.xml" value="0.14791666666666667" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_learning_schedule.xml" value="0.2" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_login.xml" value="0.176" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_nearby_library.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.22521808088818399" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/class_item.xml" value="0.1" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/schedule_item.xml" value="0.1" />
+        <entry key="..\:/Users/jeffe/LearningApplication/app/src/main/res/layout/subject_item.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.186" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_icon.xml" value="0.1875" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1875" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_timer.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/popup.xml" value="0.11944444444444445" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>
