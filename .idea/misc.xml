@@ -17,10 +17,26 @@
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/corneredbutton.xml" value="0.4734375" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/popup.xml" value="0.3140625" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/recycler_item.xml" value="0.2966485507246377" />
-        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_chinese_study_room.xml" value="0.1" />
-        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/ic_menu_camera.xml" value="0.155" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.155" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.155" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/side_nav_bar.xml" value="0.155" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_chinese_study_room.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_login.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_musicplay.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_navigation_bar.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_timer.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/app_bar_navigation_bar.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/content_navigation_bar.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/fragment_gallery.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/fragment_home.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/fragment_slideshow.xml" value="0.10597826086956522" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/header.xml" value="0.1" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/nav_header_navigation_bar.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/menu/activity_main_drawer.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/menu/menu.xml" value="0.22" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/menu/navigation_bar.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/menu/navigation_menu.xml" value="0.1" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
@@ -39,7 +55,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.22" />
       </ProjectState>
     </option>
   </component>

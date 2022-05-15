@@ -3,6 +3,21 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
-        android:title="home"/>
-
+        android:title="Home"/>
+    <item
+        android:id="@+id/achievement"
+        android:icon="@drawable/achievement"
+        android:title="Achievement"/>
+    <item
+        android:id="@+id/schedule"
+        android:icon="@drawable/schedule"
+        android:title="Schedule" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile"
+        android:title="Profile"/>
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/help"
+        android:title="Help and Information" />
 </menu>
