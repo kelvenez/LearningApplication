@@ -7,15 +7,20 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DAOtable {
     private DatabaseReference databaseReference;
 
-    public DAOtable(){
+    public DAOtable() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference(table.class.getName());
+        databaseReference = db.getReference();
     }
 
-    //public Task<Void> add(table table){
-    //    databaseReference.push().setValue(table.getTableID());
-    //}
+    public void pushMessage(String testing) {
 
+        databaseReference.child("Testing").setValue(testing);
+    }
+    
+    /*public void getMessage(){
+
+    }*/
+ 
 
 
 }

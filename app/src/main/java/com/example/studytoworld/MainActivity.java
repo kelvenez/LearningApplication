@@ -2,6 +2,9 @@ package com.example.studytoworld;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.widget.Button;
@@ -11,6 +14,7 @@ import android.os.Bundle;
 
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton table1 ,newPopUp_cancel;
@@ -22,8 +26,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         table1 = findViewById(R.id.table1);
         schedule = findViewById(R.id.schedule);
+     //   DAOtable test = new DAOtable();
+     //   test.add("hello");
         table1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){moveToSchedulePage();}
         });
-
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null);
     }
 
     private void moveToSchedulePage() {
