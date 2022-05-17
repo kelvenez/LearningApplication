@@ -57,14 +57,14 @@ public class NearbyLibrary extends AppCompatActivity {
             ActivityCompat.requestPermissions(NearbyLibrary.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
 
-        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
+        /*String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
                 "?location=" + currentLat + "," + currentLong +
                 "&radius=5000" +
                 "&types=" + "library" + //place type
                 "&sensor=true" +
                 "&key=" + getResources().getString(R.string.google_map_key);
 
-        new PlaceTask().execute(url);
+        new PlaceTask().execute(url);*/
 
 
     }
@@ -94,6 +94,16 @@ public class NearbyLibrary extends AppCompatActivity {
                             googleMapRef.animateCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(currentLat,currentLong),12
                             ));
+                            LatLng place1 = new LatLng(22.36420349186002, 114.13179379408817);
+                            LatLng place2 = new LatLng(22.370885018967122, 114.13914592047627);
+                            LatLng place3 = new LatLng(22.375040356024865, 114.11582910183797);
+                            LatLng place4 = new LatLng(22.35459183350226, 114.10610684328195);
+                            LatLng place5 = new LatLng(22.375642133763584, 114.12410367299361);
+                            googleMapRef.addMarker(new MarkerOptions().position(place1).title("South Kwai Chung Public Library"));
+                            googleMapRef.addMarker(new MarkerOptions().position(place2).title("North Kwai Chung Public Library"));
+                            googleMapRef.addMarker(new MarkerOptions().position(place3).title("Tsuen Wan Public Library"));
+                            googleMapRef.addMarker(new MarkerOptions().position(place4).title("Tsing Yi Public Library"));
+                            googleMapRef.addMarker(new MarkerOptions().position(place5).title("Shek Wai Kok Public Library"));
                         }
                     });
                 }

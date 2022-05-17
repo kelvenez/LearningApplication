@@ -54,7 +54,7 @@ public class LearningSchedule extends AppCompatActivity {
         password=intent.getStringExtra("password");
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Schedules");
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("study_time");
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime");
         existedTime=0;
         currentTime=0;
         timeStop= findViewById(R.id.timer_stop);
@@ -97,7 +97,7 @@ public class LearningSchedule extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
-                    existedTime=snapshot.getValue(int.class);
+                    existedTime=snapshot.child("Total").getValue(int.class);
                 }
             }
 
@@ -124,7 +124,7 @@ public class LearningSchedule extends AppCompatActivity {
     private void addUserTime() {
         int time = existedTime;
         time = time + currentTime;
-        timerReference.setValue(time);
+        timerReference.child("Total").setValue(time);
     }
 
     private void checkAchievement() {

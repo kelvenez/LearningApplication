@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.studytoworld">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,30 +21,42 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_map_key"/>
-        <activity
-            android:name=".Information.NearbyLibrary"
-            android:exported="true">
+            android:value="@string/google_map_key" />
 
-        </activity>
         <activity
-            android:name=".Schedule.LearningSchedule"
-            android:exported="true">
+            android:name=".Help"
+            android:exported="false" />
+        <activity
+            android:name=".Achievement.AchievementActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Information.NearbyLibrary"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".Schedule.LearningSchedule"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".Schedule.CreateLearningSchedule"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <receiver android:name=".AlarmReceiver" />
 
         <activity
-            android:name=".UserProfile"
-            android:exported="false" />
+            android:name=".UserProfile.UserProfile"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".Login"
             android:exported="true" />
@@ -51,13 +64,13 @@
             android:name=".Register"
             android:exported="true" />
         <activity
-            android:name=".EditUserProfile"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".UserProfile.EditUserProfile"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
