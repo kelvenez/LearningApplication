@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.UserProfile;
 
 import com.example.studytoworld.Achievement.Achievement;
 import com.example.studytoworld.Schedule.Schedule;
@@ -9,10 +9,12 @@ public class UserInfo {
     String email, password, first_name, last_name;
     ArrayList<Schedule> schedules;
     ArrayList<Achievement> achievements;
+    StudyTime studyTime;
 
     public UserInfo() {
         schedules=new ArrayList<>();
         achievements=new ArrayList<>();
+        studyTime = new StudyTime(0);
     }
 
     public UserInfo(String email, String password, String first_name, String last_name) {
@@ -22,6 +24,15 @@ public class UserInfo {
         this.last_name = last_name;
         schedules=new ArrayList<>();
         achievements=new ArrayList<>();
+        studyTime = new StudyTime(0);
+    }
+
+    public StudyTime getStudyTime() {
+        return studyTime;
+    }
+
+    public void setStudyTime(StudyTime studyTime) {
+        this.studyTime = studyTime;
     }
 
     public ArrayList<Schedule> getSchedules() {
