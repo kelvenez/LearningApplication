@@ -38,6 +38,12 @@
             android:exported="true" />
         <activity android:name=".MusicPlayerActivity"></activity>
         <activity
+            android:name=".ChatRoomTitleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatRoomActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

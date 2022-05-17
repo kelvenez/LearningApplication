@@ -3,6 +3,7 @@ package com.example.studytoworld;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,9 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
             @Override
             public void onClick(View v) {
                 //navigate to another acitivty
-
+                if(MyMediaPlayer.getCurInstance().isPlaying()) {
+                    MyMediaPlayer.getCurInstance().pause();
+                }
                 MyMediaPlayer.getInstance().reset();
                 MyMediaPlayer.currentIndex = position;
                 Intent intent = new Intent(context,MusicPlayerActivity.class);

@@ -7,7 +7,10 @@
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1335" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24.xml" value="0.317" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1335" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/message_box_background.xml" value="0.113" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/drawable/rounded_button.xml" value="0.2515" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_chatroom.xml" value="0.3397365532381998" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_chatroom_title.xml" value="0.3697916666666667" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_create_learning_schedule.xml" value="0.42604166666666665" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_login.xml" value="0.3269927536231884" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_main.xml" value="0.3269927536231884" />
@@ -17,9 +20,14 @@
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_register.xml" value="0.3269927536231884" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_timer.xml" value="0.3555253623188406" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/activity_user_profile.xml" value="0.207193515704154" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/chat_message.xml" value="0.3223958333333333" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/chatroom_title_item.xml" value="0.23369565217391305" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/chatroom_title_layout.xml" value="0.17958459979736577" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/corneredbutton.xml" value="0.4734375" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/popup.xml" value="0.3140625" />
         <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/recycler_item.xml" value="0.2966485507246377" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/schedule_item.xml" value="0.23369565217391305" />
+        <entry key="..\:/HKUST/COMP4521/LearningApplication-master/app/src/main/res/layout/subject_item.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_login.xml" value="0.14130434782608695" />
         <entry key="..\:/Users/kelve/Desktop/StudyToWorld/app/src/main/res/layout/activity_register.xml" value="0.22" />
       </map>

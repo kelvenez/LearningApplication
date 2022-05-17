@@ -50,11 +50,8 @@ public class MusicPlay extends AppCompatActivity {
                 MediaStore.Audio.Media.DURATION
         };
 
-
-        AudioModel cursongData = new AudioModel("none","white noise","168000");
-        songsList.add(cursongData);
-
-
+        songsList.add(new AudioModel("none","Classroom Background","2741000"));
+        songsList.add(new AudioModel("none","Fireplace Background","2152000"));
 
         String selection = MediaStore.Audio.Media.IS_MUSIC +" != 0";
 

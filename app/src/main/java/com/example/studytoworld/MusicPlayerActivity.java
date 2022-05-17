@@ -107,12 +107,15 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         mediaPlayer.reset();
         try {
-            if (currentSong.getTitle().equals("white noise")){
-                mediaPlayer = MediaPlayer.create(this, R.raw.song);
+            if (currentSong.getTitle().equals("Classroom Background")){
+                mediaPlayer = MediaPlayer.create(this, R.raw.white_classroom);
+            }else if (currentSong.getTitle().equals("Fireplace Background")){
+                mediaPlayer = MediaPlayer.create(this, R.raw.white_fireplace);
             }else {
                 mediaPlayer.setDataSource(currentSong.getPath());
                 mediaPlayer.prepare();
             }
+            MyMediaPlayer.curInstanace = mediaPlayer;
             mediaPlayer.start();
             mediaPlayer.setLooping(true);
             seekBar.setProgress(0);
