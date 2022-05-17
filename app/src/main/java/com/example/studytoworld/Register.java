@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.text.TextUtils;
 import android.content.Intent;
+
+import com.example.studytoworld.UserProfile.UserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import android.view.View;
 import com.google.firebase.auth.AuthResult;
@@ -31,6 +33,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_register);
         // taking FirebaseAuth instance
         mAuth = FirebaseAuth.getInstance();
@@ -101,7 +104,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            RegisterHelperClass helperClass = new RegisterHelperClass(email, password, first_name, last_name);
+                            UserInfo helperClass = new UserInfo(email, password, first_name, last_name);
                             myRef.child(password).setValue(helperClass);
 
                             Toast.makeText(getApplicationContext(),

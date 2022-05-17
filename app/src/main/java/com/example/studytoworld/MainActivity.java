@@ -1,9 +1,14 @@
 package com.example.studytoworld;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.view.View;
@@ -11,10 +16,11 @@ import android.os.Bundle;
 
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
+import com.google.android.material.navigation.NavigationView;
 import com.example.studytoworld.MusicPlay;
 import com.example.studytoworld.ChatRoomTitleActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton table1 ,newPopUp_cancel;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
@@ -23,12 +29,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+     //   DAOtable test = new DAOtable();
+     //   test.add("hello");
         table1 = findViewById(R.id.table1);
         schedule = findViewById(R.id.schedule);
         bg_music = findViewById(R.id.music_button);
         chatroom = findViewById(R.id.chatroom_button);
-        table1.setOnClickListener(new View.OnClickListener() {
+   /*     table1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createNewTableDiaglog();
@@ -37,7 +47,18 @@ public class MainActivity extends AppCompatActivity {
         schedule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){moveToSchedulePage();}
+        });*/
+        findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
         });
+
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
+
         bg_music.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){moveToMusicPage();}
@@ -46,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){moveToChatPage();}
         });
+
     }
 
     private void moveToSchedulePage() {
@@ -89,6 +111,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        item.setChecked(true);
+        if (id == R.id.home) {
+            // Handle the home action
+            Intent myIntent = new Intent(this, MainActivity.class);
+            this.startActivity(myIntent);
+        }
+       else if (id == R.id.achievement) {
+            // Handle the achievement action
+            Intent myIntent = new Intent(this,Register.class);
+            this.startActivity(myIntent);
+       }
+       else if (id == R.id.schedule)
+       {
+        // Handle the schedule action
+           Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+           this.startActivity(myIntent);
+       }/*
+       else if(id == R.id.profile)
+       {
+       //Handle the profile action
+       }
+       else if(id == R.id.help)
+       {
+       //Handle the help and information action
+       }*/
+       return true;
     }
 }
 
