@@ -21,11 +21,12 @@
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.155" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.155" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/drawable/side_nav_bar.xml" value="0.155" />
-        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_chinese_study_room.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_chinese_study_room.xml" value="0.1" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_login.xml" value="0.10597826086956522" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_musicplay.xml" value="0.1" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_navigation_bar.xml" value="0.10597826086956522" />
+        <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/activity_timer.xml" value="0.1" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/app_bar_navigation_bar.xml" value="0.10597826086956522" />
         <entry key="..\:/Users/kelve/Desktop/LearningApplication/app/src/main/res/layout/content_navigation_bar.xml" value="0.10597826086956522" />
@@ -55,7 +56,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.22" />
+        <option name="scale" value="0.16666666666666666" />
       </ProjectState>
     </option>
   </component>

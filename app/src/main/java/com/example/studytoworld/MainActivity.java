@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        item.setChecked(true);        if (id == R.id.nav_home) {
+        item.setChecked(true);
+        if (id == R.id.home) {
             // Handle the home action
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
@@ -94,10 +95,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent myIntent = new Intent(this,Register.class);
             this.startActivity(myIntent);
        }
-       /*else if (id == R.id.schedule)
+       else if (id == R.id.schedule)
        {
         // Handle the schedule action
-       }
+           Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+           this.startActivity(myIntent);
+       }/*
        else if(id == R.id.profile)
        {
        //Handle the profile action

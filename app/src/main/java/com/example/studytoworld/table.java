@@ -8,9 +8,9 @@ public class table {
     private DAOtable db;
 
     public table(int id) {
+        db = new DAOtable();
         this.tableID = id;
         status = false;
-        db = new DAOtable();
     }
 
     public String getUserName() {
@@ -41,6 +41,7 @@ public class table {
         return tableID;
     }
 
-
-
+    public DAOtable getDb() {
+        return db;
+    }
 }
