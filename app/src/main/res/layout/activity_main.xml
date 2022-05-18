@@ -6,12 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="380dp"
+            android:layout_height="200dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.110000014">
+
+            <ImageButton
+                android:id="@+id/room1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/room1"></ImageButton>
+
+        </androidx.cardview.widget.CardView>
+
+
         <LinearLayout
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
@@ -34,10 +54,12 @@
 
     <com.google.android.material.navigation.NavigationView
 
-        android:layout_width="180dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
         android:id="@+id/navigationView"
         app:menu="@menu/navigation_menu"
+        app:itemIconSize="120dp"
+        app:itemHorizontalPadding="0dp"
         android:layout_gravity="start"
         />
 

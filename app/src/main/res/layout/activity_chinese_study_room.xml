@@ -13,14 +13,13 @@
 
  <ImageButton
      android:id="@+id/table0"
-     android:background="#00000000"
-     android:layout_height="100dp"
      android:layout_width="100dp"
+     android:layout_height="100dp"
      android:layout_margin="10dp"
      android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
+     android:background="#00000000"
+     android:scaleType="centerCrop"
+     android:src="@drawable/table1" />
 
  <ImageButton
      android:id="@+id/table1"
@@ -29,7 +28,7 @@
      android:layout_width="100dp"
      android:layout_margin="10dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table2"
@@ -38,7 +37,7 @@
      android:layout_width="100dp"
      android:layout_margin="10dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table3"
@@ -48,7 +47,7 @@
      android:layout_margin="10dp"
      android:layout_marginRight="60dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table4"
@@ -57,7 +56,7 @@
      android:layout_width="100dp"
      android:layout_margin="10dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table5"
@@ -66,7 +65,7 @@
      android:layout_width="100dp"
      android:layout_margin="10dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table6"
@@ -76,7 +75,7 @@
      android:layout_margin="10dp"
      android:layout_marginRight="60dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table7"
@@ -84,8 +83,8 @@
      android:layout_height="100dp"
      android:layout_width="100dp"
      android:layout_margin="10dp"
+     android:scaleType="centerCrop"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
      />
  <ImageButton
      android:id="@+id/table8"
@@ -94,7 +93,7 @@
      android:layout_width="100dp"
      android:layout_margin="10dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
  <ImageButton
      android:id="@+id/table9"
@@ -104,7 +103,7 @@
      android:layout_margin="10dp"
      android:layout_marginRight="60dp"
      android:src="@drawable/table1"
-     android:scaleType="fitCenter"
+     android:scaleType="centerCrop"
      />
 
  <ImageButton
@@ -125,7 +124,7 @@
      android:layout_margin="10dp"
      android:background="#00000000"
      android:scaleType="fitCenter"
-     android:src="@drawable/table1"
+     android:src="@drawable/tableonclick"
      android:visibility="gone"
      tools:visibility="gone" />
  <ImageButton

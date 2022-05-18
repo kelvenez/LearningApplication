@@ -15,33 +15,35 @@ import java.util.List;
 
 
 public class DAOtable {
+    private static final String TAG = "Testing" ;
     private DatabaseReference databaseReference;
-    private List<String> result = new ArrayList<String>();
-    public interface  DataStatus{
-        void DataIsLoad(List<Boolean> tables, List<Integer> Key);
+    private List<Boolean> result = new ArrayList<Boolean>();
+    public interface  firebaseCallback{
+        void onCallback(List<Boolean> tablesStatus);
     }
-
-
     public DAOtable() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("table").child("id");
+        readData(new firebaseCallback() {
+            @Override
+            public void onCallback(List<Boolean> tablesStatus) {
+                     for(Boolean k : tablesStatus)
+                         result.add(k);
+                     Log.d(TAG,"DAO TableStatus:"+tablesStatus);
+                     Log.d(TAG,"DAO Result:"+result);
+            }
+        });
     }
 
-    public void pushMessage(String testing) {
-      //  databaseReference.child("table").setValue(testing);
-    }
-    
-    public List<Boolean> getMessage(){
+    public void readData(firebaseCallback firebasecallback){
         List<Boolean> keys = new ArrayList<Boolean>();
         databaseReference.addValueEventListener(new ValueEventListener() {
-            private static final String TAG = "Testing the DAO";
-
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot key : snapshot.getChildren()){
                     keys.add(key.getValue(Boolean.class));
-                    Log.d(TAG, ": " + key.getValue(Boolean.class));
                 }
+                firebasecallback.onCallback(keys);
             }
 
             @Override
@@ -49,8 +51,12 @@ public class DAOtable {
 
             }
         });
-        return keys;
     }
- }
+
+
+    public List<Boolean> getResult() {
+        return result;
+    }
+}
 
 
