@@ -11,15 +11,19 @@ public class StudyRoom implements Parcelable {
     private List<table> tables;
     private String subject;
     private List<Boolean> tableID_status ;
-    private int currentUserCounter = 0 ;
+    private int currentUserCounter;
     private DAOtable datalist;
     StudyRoom(String subject){
         datalist = new DAOtable();
+        currentUserCounter = 0 ;
         tables = new ArrayList<table>(16); // new table -> create 10 -> get.10status from db.
         for(int i =0  ; i < 16 ; i++) {
             tables.add(i, new table(i));
         }
         tableID_status = datalist.getResult();
+        for(Boolean value : tableID_status)
+            if(value)
+                currentUserCounter++;
         this.subject = subject;
     }
 
