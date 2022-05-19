@@ -1,17 +1,56 @@
 package com.example.studytoworld;
 
-public class table {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class table implements Parcelable {
     private int tableID;
     private boolean status;
-    private StringBuilder subject;
+
+
     private String userName;
     private DAOtable db;
 
     public table(int id) {
-        db = new DAOtable();
+
         this.tableID = id;
         status = false;
     }
+
+    protected table(Parcel in) {
+        tableID = in.readInt();
+        status = in.readByte() != 0;
+        userName = in.readString();
+    }
+
+    public static final Creator<table> CREATOR = new Creator<table>() {
+        @Override
+        public table createFromParcel(Parcel in) {
+            return new table(in);
+        }
+
+        @Override
+        public table[] newArray(int size) {
+            return new table[size];
+        }
+    };
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
 
     public String getUserName() {
         return userName;
@@ -33,15 +72,17 @@ public class table {
         return subject;
     }
 
-    public void setSubject(StringBuilder subject) {
-        this.subject = subject;
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public int getTableID() {
-        return tableID;
-    }
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(tableID);
+        dest.writeByte((byte) (status ? 1 : 0));
+        dest.writeString(userName);
 
-    public DAOtable getDb() {
-        return db;
     }
 }

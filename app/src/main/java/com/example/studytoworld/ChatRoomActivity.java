@@ -36,6 +36,8 @@ public class ChatRoomActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_chatroom);
         recyclerView = findViewById(R.id.recycler_chat_view);
         messageBox = findViewById(R.id.messageBox);
