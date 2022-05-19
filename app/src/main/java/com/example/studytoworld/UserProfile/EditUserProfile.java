@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,19 +28,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.io.IOException;
 
 public class EditUserProfile extends AppCompatActivity {
     private EditText emailTextView;
     private EditText passwordTextView;
-    private EditText lastnameTextView;
-    private EditText firstnameTextView;
-    String email, password, lastName, firstName;
+    private EditText userNameTextView;
+    String email, password, userName, uid;
 
     ImageView profileImageView;
     Uri imageUri;
@@ -54,8 +57,7 @@ public class EditUserProfile extends AppCompatActivity {
 
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.passwd);
-        lastnameTextView = findViewById(R.id.LastName);
-        firstnameTextView = findViewById(R.id.firstName);
+        userNameTextView = findViewById(R.id.userName);
 
         profileImageReference = FirebaseStorage.getInstance().getReference();
         profileImageView = findViewById(R.id.profile_image);
@@ -71,6 +73,7 @@ public class EditUserProfile extends AppCompatActivity {
 
         //showAllData
         showAllUserData();
+        showProfileImage();
     }
 
     @Override
@@ -84,13 +87,37 @@ public class EditUserProfile extends AppCompatActivity {
             }
     }
 
+    private void showProfileImage() {
+        try {
+            File localFile = File.createTempFile("tempFile",".jpg");
+            profileImageReference.child("images/"+uid).getFile(localFile)
+                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
+                            profileImageView.setImageBitmap(bitmap);
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(),"Failed to retrieve profile image", Toast.LENGTH_LONG).show();
+                        }
+                    });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void uploadPicture() {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading Image...");
         pd.show();
 
-        StorageReference imageRef = profileImageReference.child("images/" + 1);
+        StorageReference imageRef = profileImageReference.child("images/" + uid);
         imageRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -121,19 +148,16 @@ public class EditUserProfile extends AppCompatActivity {
         Intent intent = getIntent();
         email=intent.getStringExtra("email");
         password=intent.getStringExtra("password");
-        lastName=intent.getStringExtra("lastName");
-        firstName=intent.getStringExtra("firstName");
-
+        userName=intent.getStringExtra("userName");
+        uid = intent.getStringExtra("uid");
         emailTextView.setText(email);
         passwordTextView.setText(password);
-        lastnameTextView.setText(lastName);
-        firstnameTextView.setText(firstName);
-
+        userNameTextView.setText(userName);
     }
 
     public void update(View view){
 
-        if(isFirstNameChanged()|| isPasswordChanged()||isEmailChanged()||isLastNameChanged()){
+        if(isUserNameChanged()|| isPasswordChanged()||isEmailChanged()){
             Toast.makeText(this,"Data has been updated.", Toast.LENGTH_LONG).show();
         }
         else{
@@ -141,10 +165,10 @@ public class EditUserProfile extends AppCompatActivity {
         }
     }
 
-    private boolean isFirstNameChanged() {
-        if(!firstName.equals(firstnameTextView.getEditableText().toString())){
-            reference.child(password).child("firstName").setValue(firstnameTextView.getEditableText().toString());
-            firstName=firstnameTextView.getEditableText().toString();
+    private boolean isUserNameChanged() {
+        if(!userName.equals(userNameTextView.getEditableText().toString())){
+            reference.child(uid).child("userName").setValue(userNameTextView.getEditableText().toString());
+            userName=userNameTextView.getEditableText().toString();
             return true;
         }
         else{
@@ -153,7 +177,7 @@ public class EditUserProfile extends AppCompatActivity {
     }
     private boolean isPasswordChanged() {
         if(!password.equals(passwordTextView.getEditableText().toString())){
-            reference.child(password).child("passwd").setValue(passwordTextView.getEditableText().toString());
+            reference.child(uid).child("passwd").setValue(passwordTextView.getEditableText().toString());
             password=passwordTextView.getEditableText().toString();
             return true;
         }
@@ -161,19 +185,10 @@ public class EditUserProfile extends AppCompatActivity {
             return false;
         }
     }
-    private boolean isLastNameChanged() {
-        if(!lastName.equals(lastnameTextView.getEditableText().toString())){
-            reference.child(password).child("LastName").setValue(lastnameTextView.getEditableText().toString());
-            lastName=lastnameTextView.getEditableText().toString();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
     private boolean isEmailChanged() {
         if(!email.equals(emailTextView.getEditableText().toString())){
-            reference.child(password).child("email").setValue(emailTextView.getEditableText().toString());
+            reference.child(uid).child("email").setValue(emailTextView.getEditableText().toString());
             email=emailTextView.getEditableText().toString();
             return true;
         }

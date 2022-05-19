@@ -45,6 +45,8 @@ public class CreateLearningSchedule extends AppCompatActivity {
     private DatePickerDialog picker;
     private Button create;
     private ActivityCreateLearningScheduleBinding binding;
+    String uid;
+
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
     String subject;
@@ -78,6 +80,9 @@ public class CreateLearningSchedule extends AppCompatActivity {
         adapterItems = new ArrayAdapter<String>(this,R.layout.subject_item,items);
         subjectTextView.setAdapter(adapterItems);
         create = findViewById(R.id.create_schedule);
+
+        Intent intent = getIntent();
+        uid=intent.getStringExtra("uid");
 
         dateTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,18 +139,15 @@ public class CreateLearningSchedule extends AppCompatActivity {
         //date = dateTextView.getText().toString();
         //time = timeTextView .getText().toString();
 
-        Intent intent = getIntent();
-        String password=intent.getStringExtra("password");
-
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users");
         //Query checkUser = reference.orderByChild("password").equalTo(password);
-        Query checkUser = reference.orderByChild("password").equalTo("abc12345678");
+        Query checkUser = reference.orderByChild("id").equalTo(uid);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     //DatabaseReference newScheduleRef = reference.child(password).child("Schedules");
-                    DatabaseReference newScheduleRef = reference.child("abc12345678").child("Schedules");
+                    DatabaseReference newScheduleRef = reference.child(uid).child("Schedules");
                     Query largestId = newScheduleRef.orderByChild("id").limitToLast(1);
                     largestId.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

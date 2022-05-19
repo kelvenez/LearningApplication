@@ -4,28 +4,30 @@ import com.example.studytoworld.Achievement.Achievement;
 import com.example.studytoworld.Schedule.Schedule;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserInfo {
-    String email, password, first_name, last_name;
-    ArrayList<Schedule> schedules;
-    ArrayList<Achievement> achievements;
+    String email, password, userName;
+    HashMap<String,ArrayList<Schedule>> schedules;
+    HashMap<String,ArrayList<Achievement>> achievements;
     StudyTime studyTime;
     String id;
 
     public UserInfo() {
-        schedules=new ArrayList<>();
-        achievements=new ArrayList<>();
+        schedules=new HashMap<>();
+        achievements=new HashMap<>();
         studyTime = new StudyTime(0);
     }
 
-    public UserInfo(String email, String password, String first_name, String last_name, String id ) {
+    public UserInfo(String email, String password, String userName, String id ) {
         this.email = email;
         this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.userName = userName;
         this.id=id;
-        schedules=new ArrayList<>();
-        achievements=new ArrayList<>();
+        schedules=new HashMap<>();
+        schedules.put("Schedules", new ArrayList<Schedule>());
+        achievements=new HashMap<>();
+        achievements.put("Achievement", new ArrayList<Achievement>());
         studyTime = new StudyTime(0);
     }
 
@@ -35,22 +37,6 @@ public class UserInfo {
 
     public void setStudyTime(StudyTime studyTime) {
         this.studyTime = studyTime;
-    }
-
-    public ArrayList<Schedule> getSchedules() {
-        return schedules;
-    }
-
-    public void setSchedules(ArrayList<Schedule> schedules) {
-        this.schedules = schedules;
-    }
-
-    public ArrayList<Achievement> getAchievements() {
-        return achievements;
-    }
-
-    public void setAchievements(ArrayList<Achievement> achievements) {
-        this.achievements = achievements;
     }
 
     public String getEmail() {
@@ -69,19 +55,19 @@ public class UserInfo {
         this.password = password;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getId() {
+        return id;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setId(String id) {
+        this.id = id;
     }
 }

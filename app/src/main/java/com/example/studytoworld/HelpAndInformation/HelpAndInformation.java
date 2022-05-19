@@ -45,7 +45,7 @@ public class HelpAndInformation extends AppCompatActivity {
         Intent intent = getIntent();
         String userId = intent.getStringExtra("uid");
 
-        Log.d("TestingHelp", String.valueOf(new QuestionItem("0",content)));
-        databaseReference.child("0").setValue(new QuestionItem("0",content));
+        Log.d("TestingHelp", String.valueOf(new QuestionItem(userId,content)));
+        databaseReference.child(userId).setValue(new QuestionItem(userId,content));
     }
 }

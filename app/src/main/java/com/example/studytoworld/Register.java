@@ -3,6 +3,7 @@ package com.example.studytoworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Button;
@@ -22,10 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class Register extends AppCompatActivity {
-    private EditText emailTextView, passwordTextView ,lastnameTextView , firstnameTextView ;
+    private EditText emailTextView, passwordTextView , userNameTextView ;
     private Button Btn;
     private FirebaseAuth mAuth;
     private TextView createdAccountTextView;
+    String email, password, user_name;
 
     private FirebaseDatabase database;
     DatabaseReference myRef;
@@ -41,8 +43,7 @@ public class Register extends AppCompatActivity {
         // initialising all views through id defined above
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.passwd);
-        lastnameTextView = findViewById(R.id.LastName);
-        firstnameTextView = findViewById(R.id.firstName);
+        userNameTextView = findViewById(R.id.userName);
         createdAccountTextView = findViewById(R.id.already);
         Btn = findViewById(R.id.btnregister);
         // Set on Click Listener on Registration button
@@ -71,10 +72,8 @@ public class Register extends AppCompatActivity {
 
         // show the visibility of progress bar to show loading
         // progressbar.setVisibility(View.VISIBLE); #later add this effect
-        String email, password, first_name, last_name;
         // Take the value edit texts in Strings
-        first_name = firstnameTextView.getText().toString();
-        last_name = lastnameTextView.getText().toString();
+        user_name = userNameTextView.getText().toString();
         email = emailTextView.getText().toString();
         password = passwordTextView.getText().toString();
         // Validations for input email and password
@@ -104,8 +103,8 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            UserInfo helperClass = new UserInfo(email, password, first_name, last_name,mAuth.getUid());
-                            myRef.child(password).setValue(helperClass);
+                            UserInfo helperClass = new UserInfo(email, password, user_name ,mAuth.getCurrentUser().getUid());
+                            myRef.child(mAuth.getCurrentUser().getUid()).setValue(helperClass);
 
                             Toast.makeText(getApplicationContext(),
                                     "Registration successful!",

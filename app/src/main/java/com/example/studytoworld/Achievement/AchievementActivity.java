@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -41,14 +42,18 @@ public class AchievementActivity extends AppCompatActivity {
     HashMap<String, Integer> subjectTimeMap;
     String[] newSubjectTimeMap;
 
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievement);
 
+        Intent intent = getIntent();
+        uid = intent.getStringExtra("uid");
+
         totalLearningTime = findViewById(R.id.total_learning_time);
-        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime").child("Total");
-        studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime").child("Subject");
+        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("Total");
+        studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("Subject");
         firstSubject = findViewById(R.id.first_subject);
         secondSubject = findViewById(R.id.second_subject);
         thirdSubject = findViewById(R.id.third_subject);
@@ -62,7 +67,7 @@ public class AchievementActivity extends AppCompatActivity {
         achievementAdapter = new AchievementAdapter(this,list);
         recyclerView.setAdapter(achievementAdapter);
 
-        achievementRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Achievement");
+        achievementRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Achievement");
         achievementRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
