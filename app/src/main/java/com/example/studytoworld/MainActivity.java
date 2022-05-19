@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Handle the chatroom action
             Intent myIntent = new Intent(this,ChatRoomTitleActivity.class);
             myIntent.putExtra("uid",uid);
+            myIntent.putExtra("userName",userName);
             //pass user name if ness
             this.startActivity(myIntent);
         } else if(id == R.id.music){

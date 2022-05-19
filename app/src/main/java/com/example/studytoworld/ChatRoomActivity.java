@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +30,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     TextView titleTextView;
     TextView noMessageTextView;
     String chatroomName;
+    String userName;
     ChatRoomMessageAdapter messageAdapter;
     ArrayList<Message> messageList = new ArrayList<>();
     DatabaseReference dbRef;
@@ -46,6 +48,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         noMessageTextView = findViewById(R.id.no_chat_text);
         Intent intent = getIntent();
         chatroomName=intent.getStringExtra("NAME");
+        userName = intent.getStringExtra("userName");
         titleTextView.setText(chatroomName);
         dbRef = FirebaseDatabase.getInstance().getReference("chatrooms").child(chatroomName);
         messageAdapter = new ChatRoomMessageAdapter(messageList,getApplicationContext());
@@ -75,7 +78,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 if(!message.isEmpty()) {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss");
                     String currentDateandTime = sdf.format(new Date());
-                    Message messageObj = new Message("None", message, currentDateandTime);
+                    Message messageObj = new Message(userName, message, currentDateandTime);
                     dbRef.push().setValue(messageObj);
                     messageBox.setText("");
                 }

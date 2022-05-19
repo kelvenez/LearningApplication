@@ -34,9 +34,10 @@ public class ChatRoomTitleActivity extends AppCompatActivity {
         chatRoomList.add("MobileApp");
         chatRoomList.add("Multimedia");
         chatRoomList.add("VR");
+        String userName = getIntent().getStringExtra("userName");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new ChatRoomTitleAdapter(chatRoomList, getApplicationContext()));
+        recyclerView.setAdapter(new ChatRoomTitleAdapter(chatRoomList, userName, getApplicationContext()));
 
 
 //        Cursor cursor = getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,projection,selection,null,null);

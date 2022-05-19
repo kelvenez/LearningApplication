@@ -175,7 +175,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         dialogBuilder = new AlertDialog.Builder(this);
         final View tablePopUpView = getLayoutInflater().inflate(R.layout.popup, null);
 
-        newPopUp_cancel = (ImageButton) tablePopUpView.findViewById(R.id.cancelButton);
+        newPopUp_cancel = (Button) tablePopUpView.findViewById(R.id.cancelButton);
         TextView timerText = tablePopUpView.findViewById(R.id.timerTextpopup);
 
         dialogBuilder.setView(tablePopUpView);

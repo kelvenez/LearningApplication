@@ -19,10 +19,12 @@ public class ChatRoomTitleAdapter extends RecyclerView.Adapter<ChatRoomTitleAdap
 
     ArrayList<String> chatroomList;
     Context context;
+    String userName;
 
-    public ChatRoomTitleAdapter(ArrayList<String> chatroomList, Context context) {
+    public ChatRoomTitleAdapter(ArrayList<String> chatroomList, String userName, Context context) {
         this.chatroomList = chatroomList;
         this.context = context;
+        this.userName = userName;
     }
 
     @Override
@@ -41,6 +43,7 @@ public class ChatRoomTitleAdapter extends RecyclerView.Adapter<ChatRoomTitleAdap
                 //navigate to another acitivty
                 Intent intent = new Intent(context,ChatRoomActivity.class);
                 intent.putExtra("NAME", chatroomList.get(position));
+                intent.putExtra("userName", userName);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
