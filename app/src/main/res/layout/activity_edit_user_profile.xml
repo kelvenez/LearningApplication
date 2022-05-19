@@ -39,36 +39,23 @@
             <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="First Name"
-            android:layout_marginBottom="20dp">
+            android:hint="User Name"
+            android:layout_marginBottom="40dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/firstName"
+                    android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/drawable_left_user"
                     android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Last Name"
-                android:layout_marginBottom="20dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/LastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/drawable_left_dialpad"
-                    android:drawablePadding="10dp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="40dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/email"
@@ -82,13 +69,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="40dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/drawable_left_cursor"
+                    android:drawableLeft="@drawable/drawable_left_dialpad"
                     android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

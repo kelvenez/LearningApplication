@@ -25,7 +25,7 @@
                 android:layout_centerVertical="true"/>
 
             <TextView
-                android:id="@+id/first_name"
+                android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -35,22 +35,12 @@
                 android:includeFontPadding="false"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/first_name"
-                android:fontFamily="@font/aclonica"
-                android:includeFontPadding="false"
-                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/first_name"
+                android:layout_below="@+id/userName"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/profile_image"
                 android:includeFontPadding="false"
@@ -101,7 +91,7 @@
                 android:textColor="@color/white"
                 android:background="#ff5500"
                 android:textSize="15dp"
-                android:onClick="MoveToNearbyLivrariesPage"></androidx.appcompat.widget.AppCompatButton>
+                android:onClick="MoveToNearbyLibrariesPage"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Help"

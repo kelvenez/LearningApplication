@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
 
     private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
-    private String firstNameFromDB, lastNameFromDB, emailFromDB, passwordFromDB;
+    private String userNameFromDB, emailFromDB, passwordFromDB, idFromDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                                             Toast.LENGTH_LONG)
                                             .show();
 
-                                    getUserInfo(password);
+                                    getUserInfo(mAuth.getCurrentUser().getUid());
                                     //Intent intent1 = new Intent(Login.this, UserProfile.class);
                                     //intent1.putExtra("email",emailFromDB);
                                     //intent1.putExtra("password", passwordFromDB);
@@ -136,22 +136,21 @@ public class Login extends AppCompatActivity {
                         });
     }
 
-    private void getUserInfo(String password){
-        Query checkUser = reference.orderByChild("password").equalTo(password);
+    private void getUserInfo(String userID){
+        Query checkUser = reference.orderByChild("id").equalTo(userID);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    firstNameFromDB = snapshot.child(password).child("first_name").getValue(String.class);
-                    lastNameFromDB = snapshot.child(password).child("last_name").getValue(String.class);
-                    emailFromDB = snapshot.child(password).child("email").getValue(String.class);
-                    passwordFromDB = snapshot.child(password).child("password").getValue(String.class);
-
+                    userNameFromDB = snapshot.child(userID).child("userName").getValue(String.class);
+                    emailFromDB = snapshot.child(userID).child("email").getValue(String.class);
+                    passwordFromDB = snapshot.child(userID).child("password").getValue(String.class);
+                    idFromDB = snapshot.child(userID).child("id").getValue(String.class);
                     Intent intent1 = new Intent(Login.this, MainActivity.class);
                     intent1.putExtra("email",emailFromDB);
                     intent1.putExtra("password", passwordFromDB);
-                    intent1.putExtra("firstName",firstNameFromDB);
-                    intent1.putExtra("lastName",lastNameFromDB);
+                    intent1.putExtra("userName",userNameFromDB);
+                    intent1.putExtra("uid",idFromDB);
 
                     // hide the progress bar
                     // progressBar.setVisibility(View.GONE); #later design

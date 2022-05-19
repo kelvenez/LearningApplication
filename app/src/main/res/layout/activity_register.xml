@@ -48,12 +48,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/LastName"
+        android:id="@+id/userName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="21dp"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="User Name"
         android:inputType="textPersonName"
 
         android:minHeight="48dp"
@@ -83,24 +83,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
 
-    <EditText
-
-        android:id="@+id/firstName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-
-        android:minHeight="48dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.323" />
 
     <Button
         android:id="@+id/btnregister"

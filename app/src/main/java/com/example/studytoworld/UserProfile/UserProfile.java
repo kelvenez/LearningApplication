@@ -28,9 +28,8 @@ import java.io.IOException;
 
 public class UserProfile extends AppCompatActivity {
     private TextView emailTextView;
-    private TextView lastnameTextView;
-    private TextView firstnameTextView;
-    String email, password, lastName, firstName;
+    private TextView userNameTextView;
+    String email, password, userName, uid;
     DatabaseReference reference;
 
     ImageView profileView;
@@ -44,11 +43,10 @@ public class UserProfile extends AppCompatActivity {
 
 
         emailTextView = findViewById(R.id.email);
-        lastnameTextView = findViewById(R.id.last_name);
-        firstnameTextView = findViewById(R.id.first_name);
+        userNameTextView = findViewById(R.id.userName);
         showAllUserData();
 
-        storageReference= FirebaseStorage.getInstance().getReference("images/"+1);
+        storageReference= FirebaseStorage.getInstance().getReference("images/"+ uid);
         profileView = findViewById(R.id.profile_image);
         showProfileImage();
 
@@ -82,12 +80,10 @@ public class UserProfile extends AppCompatActivity {
         Intent intent = getIntent();
         email=intent.getStringExtra("email");
         password=intent.getStringExtra("password");
-        lastName=intent.getStringExtra("lastName");
-        firstName=intent.getStringExtra("firstName");
-
+        userName=intent.getStringExtra("userName");
+        uid=intent.getStringExtra("uid");
         emailTextView.setText(email);
-        lastnameTextView.setText(lastName);
-        firstnameTextView.setText(firstName);
+        userNameTextView.setText(userName);
 
     }
 
@@ -95,25 +91,26 @@ public class UserProfile extends AppCompatActivity {
         Intent intentToEdit = new Intent(getApplicationContext(), EditUserProfile.class);
         intentToEdit.putExtra("email",email);
         intentToEdit.putExtra("password", password);
-        intentToEdit.putExtra("firstName",firstName);
-        intentToEdit.putExtra("lastName",lastName);
+        intentToEdit.putExtra("userName",userName);
+        intentToEdit.putExtra("uid", uid);
 
         startActivity(intentToEdit);
     }
 
     public void MoveToAchievementPage(View view) {
         Intent intent = new Intent(getApplicationContext(), AchievementActivity.class);
-        intent.putExtra("password",password);
+        intent.putExtra("uid",uid);
         startActivity(intent);
     }
 
-    public void MoveToNearbyLivrariesPage(View view) {
+    public void MoveToNearbyLibrariesPage(View view) {
         Intent intent = new Intent(getApplicationContext(), NearbyLibrary.class);
         startActivity(intent);
     }
 
     public void MoveToHelpPage(View view) {
         Intent intent = new Intent(getApplicationContext(), HelpAndInformation.class);
+        intent.putExtra("uid",uid);
         startActivity(intent);
     }
 }
