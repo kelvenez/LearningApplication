@@ -6,9 +6,13 @@ import android.os.Parcelable;
 public class table implements Parcelable {
     private int tableID;
     private boolean status;
+
+
     private String userName;
+    private DAOtable db;
 
     public table(int id) {
+
         this.tableID = id;
         status = false;
     }
@@ -47,9 +51,27 @@ public class table implements Parcelable {
         this.status = status;
     }
 
-    public int getTableID() {
-        return tableID;
+
+    public String getUserName() {
+        return userName;
     }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public StringBuilder getSubject() {
+        return subject;
+    }
+
 
     @Override
     public int describeContents() {
@@ -61,5 +83,6 @@ public class table implements Parcelable {
         dest.writeInt(tableID);
         dest.writeByte((byte) (status ? 1 : 0));
         dest.writeString(userName);
+
     }
 }

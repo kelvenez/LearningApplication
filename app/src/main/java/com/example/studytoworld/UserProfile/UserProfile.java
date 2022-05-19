@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studytoworld.Achievement.AchievementActivity;
-import com.example.studytoworld.Help;
+import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
 import com.example.studytoworld.Information.NearbyLibrary;
 import com.example.studytoworld.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -113,7 +113,7 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void MoveToHelpPage(View view) {
-        Intent intent = new Intent(getApplicationContext(), Help.class);
+        Intent intent = new Intent(getApplicationContext(), HelpAndInformation.class);
         startActivity(intent);
     }
 }

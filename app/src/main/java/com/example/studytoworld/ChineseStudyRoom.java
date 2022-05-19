@@ -34,6 +34,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ChineseStudyRoom extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private static final String TAG =  "Testing:";
     private StudyRoom studyroom;
     private List<ImageButton> table;
@@ -206,7 +207,3 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
 //            });
 //        }
 //    }
-
-
-
-

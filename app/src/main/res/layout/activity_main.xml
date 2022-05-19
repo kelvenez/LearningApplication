@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+
+
     tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,18 +91,22 @@
             android:orientation="horizontal"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
+
             <ImageView
                 android:id="@+id/imageMenu"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/app_name"
+
                 android:src="@drawable/ic_menu"></ImageView>
+
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

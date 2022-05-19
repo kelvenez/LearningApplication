@@ -3,6 +3,7 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/home"
+
         android:title=""/>
     <item
         android:id="@+id/achievement"
@@ -34,4 +35,5 @@
     <item
         android:id="@+id/musicpage"
         android:title="music"/>
+
 </menu>

@@ -66,11 +66,23 @@ public class StudyRoom implements Parcelable {
 
     public void userLeave(){
         currentUserCounter--;
+
+    }
+
+    public int getCurrentUserCounter() {
+        return currentUserCounter;
+
+    }
+
+    public StringBuffer getSubject() {
+        return subject;
     }
 
     public int getCurrentUserCounter() {
         return currentUserCounter;
     }
+
+
 
 
     public String getSubject() {

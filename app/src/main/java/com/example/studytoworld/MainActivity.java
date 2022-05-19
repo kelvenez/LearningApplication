@@ -20,9 +20,10 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private ImageButton newPopUp_cancel;
+
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private Button schedule;
+    private Button schedule, bg_music, chatroom;
     private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         findViewById(R.id.room2).setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this,EnglishStudyRoom.class);
                 myIntent.putExtra("EnglishRoom",english);
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view){
                 drawerLayout.openDrawer(GravityCompat.START);
@@ -58,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

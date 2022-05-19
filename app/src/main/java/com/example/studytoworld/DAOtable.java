@@ -3,7 +3,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,12 +41,14 @@ public class DAOtable {
     public void readData(firebaseCallback firebasecallback){
         List<Boolean> keys = new ArrayList<Boolean>();
         databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot key : snapshot.getChildren()){
                     keys.add(key.getValue(Boolean.class));
                 }
                 firebasecallback.onCallback(keys);
+
             }
 
             @Override
@@ -59,5 +63,4 @@ public class DAOtable {
         return result;
     }
 }
-
 
