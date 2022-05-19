@@ -45,7 +45,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -59,14 +59,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/first_subject"
@@ -74,20 +74,20 @@
                         android:layout_height="wrap_content"
                         android:text="1. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/second_subject"
@@ -95,20 +95,20 @@
                         android:layout_height="wrap_content"
                         android:text="1. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                     <TextView
                         android:id="@+id/third_subject"
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:text="1. "
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -148,4 +148,5 @@
                 app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

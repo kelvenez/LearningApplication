@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +13,11 @@ import android.widget.Toast;
 import android.text.TextUtils;
 import android.content.Intent;
 
+import com.example.studytoworld.Achievement.Achievement;
+import com.example.studytoworld.Schedule.Schedule;
+import com.example.studytoworld.UserProfile.AchievementList;
+import com.example.studytoworld.UserProfile.ScheduleList;
+import com.example.studytoworld.UserProfile.StudyTime;
 import com.example.studytoworld.UserProfile.UserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import android.view.View;
@@ -20,6 +26,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Register extends AppCompatActivity {
@@ -103,9 +113,15 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            UserInfo helperClass = new UserInfo(email, password, user_name ,mAuth.getCurrentUser().getUid());
+                            ScheduleList scheduleArrayList = new ScheduleList("Schedules");
+                            AchievementList achievementArrayList = new AchievementList(1,"testing");
+                            StudyTime studyTime = new StudyTime(0);
+                            UserInfo helperClass = new UserInfo(email, password, user_name ,mAuth.getCurrentUser().getUid(),scheduleArrayList,achievementArrayList,studyTime);
                             myRef.child(mAuth.getCurrentUser().getUid()).setValue(helperClass);
-
+                            //myRef.child(mAuth.getCurrentUser().getUid()).child("Schedules").setValue(new ArrayList<Schedule>());
+                            //myRef.child(mAuth.getCurrentUser().getUid()).child("Achievement").setValue(new ArrayList<Achievement>());
+                            myRef.child(mAuth.getCurrentUser().getUid()).child("studyTime").child("Subject").child("Chinese").setValue(0);
+                            myRef.child(mAuth.getCurrentUser().getUid()).child("studyTime").child("Subject").child("English").setValue(0);
                             Toast.makeText(getApplicationContext(),
                                     "Registration successful!",
                                     Toast.LENGTH_LONG)
