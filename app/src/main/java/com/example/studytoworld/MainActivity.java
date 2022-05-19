@@ -97,17 +97,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent myIntent = new Intent(this, MainActivity.class);
             this.startActivity(myIntent);
         }
-       else if (id == R.id.achievement) {
+        else if (id == R.id.achievement) {
             // Handle the achievement action
             Intent myIntent = new Intent(this,Register.class);
             this.startActivity(myIntent);
-       }
-       else if (id == R.id.schedule)
-       {
-        // Handle the schedule action
-           Intent myIntent = new Intent(this,ChineseStudyRoom.class);
-           this.startActivity(myIntent);
-       }/*
+        }
+        else if (id == R.id.schedule)
+        {
+            // Handle the schedule action
+            Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+            this.startActivity(myIntent);
+        }/*
        else if(id == R.id.profile)
        {
        //Handle the profile action
@@ -116,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        {
        //Handle the help and information action
        }*/
-       return true;
+        return true;
     }
 }
-

@@ -11,16 +11,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
+        android:id="@+id/icon_view"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:id="@+id/icon_view"
         android:layout_centerVertical="true"
-        android:src="@drawable/music_icon"/>
+        android:src="@drawable/music_icon" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:id="@+id/musix_title_text"
+        android:id="@+id/music_title_text"
         android:layout_toEndOf="@+id/icon_view"
         android:padding="10dp"
         android:maxLines="1"

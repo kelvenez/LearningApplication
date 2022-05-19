@@ -21,9 +21,9 @@
         </activity>
 
         <receiver android:name=".AlarmReceiver" />
-
+      
         <activity
-            android:name=".UserProfile"
+            android:name=".UserProfile.UserProfile"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -32,10 +32,23 @@
             android:name=".Register"
             android:exported="true" />
         <activity
-            android:name=".EditUserProfile"
-            android:exported="true">
-
-        </activity>
+            android:name=".UserProfile.EditUserProfile"
+            android:exported="true" />
+        <activity
+            android:name=".ChatRoomTitleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChatRoomActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MusicPlay"
+            android:exported="true" />
+        <activity
+            android:name=".MusicPlayerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ChineseStudyRoom"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
