@@ -27,13 +27,23 @@ public class DAOtable {
     public DAOtable(String subject) {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference(subject).child("id");
-        readData(new firebaseCallback() {
+     /*   readData(tablesStatus -> {
+                 for(Boolean k : tablesStatus)
+                     result.add(k);
+                 Log.d(TAG,"DAO TableStatus:"+tablesStatus);
+                 Log.d(TAG,"DAO Result:"+result);
+        }); */
+        db.getReference(subject).child("id").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onCallback(List<Boolean> tablesStatus) {
-                     for(Boolean k : tablesStatus)
-                         result.add(k);
-                     Log.d(TAG,"DAO TableStatus:"+tablesStatus);
-                     Log.d(TAG,"DAO Result:"+result);
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    for(DataSnapshot snap : task.getResult().getChildren())
+                        Log.d("firebase", "test" + snap);
+                      //  result.add(snap.getValue(Boolean.class));
+                }
             }
         });
     }
@@ -57,7 +67,6 @@ public class DAOtable {
             }
         });
     }
-
 
     public List<Boolean> getResult() {
         return result;

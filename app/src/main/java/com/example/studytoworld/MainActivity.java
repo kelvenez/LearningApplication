@@ -8,17 +8,22 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.Navigation;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
 import com.google.android.material.navigation.NavigationView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = "currentUserMain";
     private ImageButton newPopUp_cancel;
 
     private AlertDialog.Builder dialogBuilder;
@@ -33,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         StudyRoom english = new StudyRoom("English");
         setContentView(R.layout.activity_main);
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        final TextView chineseCount = (TextView) findViewById(R.id.chineseCounter);
+       // Log.d(TAG, "finalcurrentUserCounter: " + chinese.getCurrentUserCounter());
+        chineseCount.setText("Chinese StudyRoom:");
+        final TextView englishCount = (TextView) findViewById(R.id.englishCounter);
+        englishCount.setText("English StudyRoom");
         findViewById(R.id.room1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
