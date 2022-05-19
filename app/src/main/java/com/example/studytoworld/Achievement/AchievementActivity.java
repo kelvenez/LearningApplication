@@ -52,7 +52,7 @@ public class AchievementActivity extends AppCompatActivity {
         uid = intent.getStringExtra("uid");
 
         totalLearningTime = findViewById(R.id.total_learning_time);
-        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("Total");
+        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("totalStudyTime");
         studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("Subject");
         firstSubject = findViewById(R.id.first_subject);
         secondSubject = findViewById(R.id.second_subject);
@@ -71,12 +71,14 @@ public class AchievementActivity extends AppCompatActivity {
         achievementRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                if(snapshot!=null) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    Achievement achievement = dataSnapshot.getValue(Achievement.class);
-                    list.add(achievement);
+                        Achievement achievement = dataSnapshot.getValue(Achievement.class);
+                        list.add(achievement);
+                    }
+                    achievementAdapter.notifyDataSetChanged();
                 }
-                achievementAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -100,14 +102,16 @@ public class AchievementActivity extends AppCompatActivity {
         studyTimeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Integer time = dataSnapshot.getValue(Integer.class);
-                    String subject = dataSnapshot.getKey();
-                    subjectTimeMap.put(subject,time);
+                if(snapshot!=null) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Integer time = dataSnapshot.getValue(Integer.class);
+                        String subject = dataSnapshot.getKey();
+                        subjectTimeMap.put(subject, time);
+                    }
+                    //Log.d("TestingAchievement", String.valueOf(subjectTimeMap));
+                    sortSubjectTime();
+                    showSubjectTime();
                 }
-                //Log.d("TestingAchievement", String.valueOf(subjectTimeMap));
-                sortSubjectTime();
-                showSubjectTime();
             }
 
             @Override

@@ -4,16 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StudyTime {
-    HashMap<String, Integer> subjectStudyTime;
+    SubjectTime subjectStudyTime;
     int totalStudyTime;
 
     public StudyTime() {
     }
 
     public StudyTime(int totalStudyTime) {
-        this.subjectStudyTime = new HashMap<>();
-        subjectStudyTime.put("Chinese",0);
-        subjectStudyTime.put("English",0);
+        this.subjectStudyTime = new SubjectTime();
         this.totalStudyTime = totalStudyTime;
     }
 
@@ -24,5 +22,17 @@ public class StudyTime {
 
     public void setTotalStudyTime(int totalStudyTime) {
         this.totalStudyTime = totalStudyTime;
+    }
+
+    private class SubjectTime {
+        String title;
+        HashMap<String, Integer> hashMap;
+
+        public SubjectTime() {
+            title = "Subject";
+            hashMap= new HashMap<>();
+            hashMap.put("Chinese",0);
+            hashMap.put("English",0);
+        }
     }
 }

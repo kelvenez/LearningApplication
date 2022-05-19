@@ -8,27 +8,23 @@ import java.util.HashMap;
 
 public class UserInfo {
     String email, password, userName;
-    HashMap<String,ArrayList<Schedule>> schedules;
-    HashMap<String,ArrayList<Achievement>> achievements;
+    ScheduleList schedules;
+    AchievementList achievements;
     StudyTime studyTime;
     String id;
 
     public UserInfo() {
-        schedules=new HashMap<>();
-        achievements=new HashMap<>();
-        studyTime = new StudyTime(0);
+
     }
 
-    public UserInfo(String email, String password, String userName, String id ) {
+    public UserInfo(String email, String password, String userName, String id,ScheduleList scheduleList, AchievementList achievementList, StudyTime studyTime ) {
         this.email = email;
         this.password = password;
         this.userName = userName;
         this.id=id;
-        schedules=new HashMap<>();
-        schedules.put("Schedules", new ArrayList<Schedule>());
-        achievements=new HashMap<>();
-        achievements.put("Achievement", new ArrayList<Achievement>());
-        studyTime = new StudyTime(0);
+        this.schedules=scheduleList;
+        this.achievements=achievementList;
+        this.studyTime = studyTime;
     }
 
     public StudyTime getStudyTime() {
@@ -70,4 +66,5 @@ public class UserInfo {
     public void setId(String id) {
         this.id = id;
     }
+
 }

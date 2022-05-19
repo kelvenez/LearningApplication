@@ -139,17 +139,16 @@ public class CreateLearningSchedule extends AppCompatActivity {
         //date = dateTextView.getText().toString();
         //time = timeTextView .getText().toString();
 
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users").child(uid).child("Schedules");
         //Query checkUser = reference.orderByChild("password").equalTo(password);
-        Query checkUser = reference.orderByChild("id").equalTo(uid);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     //DatabaseReference newScheduleRef = reference.child(password).child("Schedules");
                     DatabaseReference newScheduleRef = reference.child(uid).child("Schedules");
-                    Query largestId = newScheduleRef.orderByChild("id").limitToLast(1);
-                    largestId.addListenerForSingleValueEvent(new ValueEventListener() {
+                    //Query largestId = newScheduleRef.orderByChild("id").limitToLast(1);
+                    newScheduleRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
@@ -162,7 +161,7 @@ public class CreateLearningSchedule extends AppCompatActivity {
                                 ++id;
                                 newScheduleRef.child(Integer.toString(id)).setValue(new Schedule(id, subject, year, month, day, hour, minute));
                             } else {
-                                newScheduleRef.child(Integer.toString(0)).setValue(new Schedule(0, subject, year, month, day, hour, minute));
+                                newScheduleRef.child("Schedules").child(Integer.toString(0)).setValue(new Schedule(0, subject, year, month, day, hour, minute));
                             }
                         }
 

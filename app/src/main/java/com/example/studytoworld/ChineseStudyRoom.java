@@ -32,11 +32,12 @@ import java.util.TimerTask;
 public class ChineseStudyRoom extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG =  "Testing:";
+    String uid;
     private StudyRoom studyroom;
     private List<ImageButton> table;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private Button newPopUp_cancel;
+    private ImageButton newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
 //    private List<Boolean> testing = new ArrayList<>();
@@ -55,6 +56,10 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent =getIntent();
+        uid = intent.getStringExtra("uid");
+
         DrawerLayout drawerLayout = findViewById(R.id.chineseDraw);
         table = new ArrayList<ImageButton>();
         studyroom =  getIntent().getExtras().getParcelable("ChineseRoom");
@@ -65,7 +70,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
 
         //time and achievement
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime");
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime");
         existedTotalTime=0;
         existedSubjectTime=0;
         currentTime=0;
@@ -75,8 +80,13 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
                     existedTotalTime=snapshot.child("Total").getValue(int.class);
+                    if(snapshot.child("Subject")==null){
+                        timerReference.child("Subject").child("Chinese").setValue(0);
+                        timerReference.child("Subject").child("English").setValue(0);
+                    }
                     existedSubjectTime=snapshot.child("Subject").child(studyroom.getSubject()).getValue(int.class);
                 }
+
             }
 
             @Override
@@ -234,7 +244,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         newTotaltime = newTotaltime + currentTime;
         int newSubjectTime = existedSubjectTime;
         newSubjectTime = newSubjectTime + currentTime;
-        timerReference.child("Total").setValue(newTotaltime);
+        timerReference.child("totalStudyTime").setValue(newTotaltime);
         timerReference.child("Subject").child(studyroom.getSubject()).setValue(newSubjectTime);
     }
 
@@ -256,26 +266,32 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
             }
         });
         //get user achievements;
-        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Achievement");
+        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Achievement");
         userAchievementRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int sumOfExistedTimeAndCurrentTime = existedTotalTime+currentTime;
-                for(int i=0; i<systemAchievementList.size();++i){
+                int sumOfExistedTimeAndCurrentTime = existedTotalTime + currentTime;
+                for (int i = 0; i < systemAchievementList.size(); ++i) {
                     Achievement systemAchievementItem = systemAchievementList.get(i);
                     //fulfil condition
-                    if(sumOfExistedTimeAndCurrentTime>=systemAchievementItem.getCondition()){
+                    if (sumOfExistedTimeAndCurrentTime >= systemAchievementItem.getCondition()) {
                         //check if the user already got the achievement
-                        boolean haveAlready=false;
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Achievement achievement = dataSnapshot.getValue(Achievement.class);
-                            if(achievement.getCondition()==systemAchievementItem.getCondition()){
-                                haveAlready=true;
-                                break;
+                        if (snapshot != null) {
+                            boolean haveAlready = false;
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                Achievement achievement = dataSnapshot.getValue(Achievement.class);
+                                if (achievement.getCondition() == systemAchievementItem.getCondition()) {
+                                    haveAlready = true;
+                                    break;
+                                }
+                            }
+                            if (haveAlready == false) {
+                                //add to user database and show a congratulation notification
+                                userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
+                                Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
                             }
                         }
-                        if(haveAlready==false){
-                            //add to user database and show a congratulation notification
+                        else{
                             userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
                             Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
                         }

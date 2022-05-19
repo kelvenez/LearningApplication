@@ -72,13 +72,14 @@ public class LearningSchedule extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot!=null) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-
-                    Schedule schedule = dataSnapshot.getValue(Schedule.class);
-                    list.add(schedule);
+                        Schedule schedule = dataSnapshot.getValue(Schedule.class);
+                        list.add(schedule);
+                    }
+                    scheduleAdapter.notifyDataSetChanged();
                 }
-                scheduleAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -149,24 +150,26 @@ public class LearningSchedule extends AppCompatActivity {
         userAchievementRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int sumOfExistedTimeAndCurrentTime = existedTime+currentTime;
-                for(int i=0; i<systemAchievementList.size();++i){
-                    Achievement systemAchievementItem = systemAchievementList.get(i);
-                    //fulfil condition
-                    if(sumOfExistedTimeAndCurrentTime>=systemAchievementItem.getCondition()){
-                        //check if the user already got the achievement
-                        boolean haveAlready=false;
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Achievement achievement = dataSnapshot.getValue(Achievement.class);
-                            if(achievement.getCondition()==systemAchievementItem.getCondition()){
-                                haveAlready=true;
-                                break;
+                if(snapshot!=null) {
+                    int sumOfExistedTimeAndCurrentTime = existedTime + currentTime;
+                    for (int i = 0; i < systemAchievementList.size(); ++i) {
+                        Achievement systemAchievementItem = systemAchievementList.get(i);
+                        //fulfil condition
+                        if (sumOfExistedTimeAndCurrentTime >= systemAchievementItem.getCondition()) {
+                            //check if the user already got the achievement
+                            boolean haveAlready = false;
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                Achievement achievement = dataSnapshot.getValue(Achievement.class);
+                                if (achievement.getCondition() == systemAchievementItem.getCondition()) {
+                                    haveAlready = true;
+                                    break;
+                                }
                             }
-                        }
-                        if(haveAlready==false){
-                            //add to user database and show a congratulation notification
-                            userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
-                            Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
+                            if (haveAlready == false) {
+                                //add to user database and show a congratulation notification
+                                userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
+                                Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 }
