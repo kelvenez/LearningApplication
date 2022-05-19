@@ -10,6 +10,7 @@ public class UserInfo {
     ArrayList<Schedule> schedules;
     ArrayList<Achievement> achievements;
     StudyTime studyTime;
+    String id;
 
     public UserInfo() {
         schedules=new ArrayList<>();
@@ -17,11 +18,12 @@ public class UserInfo {
         studyTime = new StudyTime(0);
     }
 
-    public UserInfo(String email, String password, String first_name, String last_name) {
+    public UserInfo(String email, String password, String first_name, String last_name, String id ) {
         this.email = email;
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.id=id;
         schedules=new ArrayList<>();
         achievements=new ArrayList<>();
         studyTime = new StudyTime(0);

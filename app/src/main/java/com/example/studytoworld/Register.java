@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            UserInfo helperClass = new UserInfo(email, password, first_name, last_name);
+                            UserInfo helperClass = new UserInfo(email, password, first_name, last_name,mAuth.getUid());
                             myRef.child(password).setValue(helperClass);
 
                             Toast.makeText(getApplicationContext(),
