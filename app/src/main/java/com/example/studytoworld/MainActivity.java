@@ -116,6 +116,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        {
        //Handle the help and information action
        }*/
+        else if(id == R.id.chatroom)
+        {
+            //Handle the chatroom action
+            Intent myIntent = new Intent(this,ChatRoomTitleActivity.class);
+            //pass user name if ness
+            this.startActivity(myIntent);
+        } else if(id == R.id.music){
+            //Handle the chatroom action
+            Intent myIntent = new Intent(this,MusicPlay.class);
+            this.startActivity(myIntent);
+        }
         return true;
     }
 }

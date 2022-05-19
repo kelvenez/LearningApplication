@@ -37,6 +37,7 @@ public class ChineseStudyRoom extends AppCompatActivity {
     private ImageButton newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
+//    private List<Boolean> testing = new ArrayList<>();
     Double time = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,20 +147,20 @@ public class ChineseStudyRoom extends AppCompatActivity {
 
     }
 
-    public void updateChange(List<Boolean> keys){
-        Log.d(TAG, "createNewTableDialog: " + testing);
-        this.testing = keys;
-        for(int i=0; i<16; i++) {
-            int buttonId = this.getResources().getIdentifier("table"+i, "id", this.getPackageName());
-            table.add((ImageButton)findViewById(buttonId));
-            table.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    createNewTableDialog();
-                }
-            });
-        }
-    }
+//    public void updateChange(List<Boolean> keys){
+//        Log.d(TAG, "createNewTableDialog: " + testing);
+//        this.testing = keys;
+//        for(int i=0; i<16; i++) {
+//            int buttonId = this.getResources().getIdentifier("table"+i, "id", this.getPackageName());
+//            table.add((ImageButton)findViewById(buttonId));
+//            table.get(i).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    createNewTableDialog();
+//                }
+//            });
+//        }
+//    }
 
 
 

@@ -21,7 +21,13 @@
         </activity>
 
         <receiver android:name=".AlarmReceiver" />
-      
+
+        <activity
+            android:name=".Achievement.AchievementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Information.NearbyLibrary"
+            android:exported="true" />
         <activity
             android:name=".UserProfile.UserProfile"
             android:exported="false" />
@@ -58,10 +64,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ChineseStudyRoom"
-            android:exported="true">
-        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

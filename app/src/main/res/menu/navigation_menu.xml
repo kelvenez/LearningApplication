@@ -17,6 +17,14 @@
         android:icon="@drawable/profile"
         android:title=""/>
     <item
+        android:id="@+id/chatroom"
+        android:icon="@drawable/chatroom"
+        android:title="" />
+    <item
+        android:id="@+id/music"
+        android:icon="@drawable/bg_music"
+        android:title="" />
+    <item
         android:id="@+id/help"
         android:icon="@drawable/help"
         android:title="" />
