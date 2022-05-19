@@ -19,7 +19,7 @@ import com.example.studytoworld.Schedule.LearningSchedule;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private ImageButton table1 ,newPopUp_cancel;
+    private ImageButton newPopUp_cancel;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private Button schedule;
@@ -28,10 +28,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
+        StudyRoom chinese = new StudyRoom("Chinese");
         setContentView(R.layout.activity_main);
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        //   DAOtable test = new DAOtable();
-        //   test.add("hello");
+        findViewById(R.id.room1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this,ChineseStudyRoom.class);
+                myIntent.putExtra("ChineseRoom",chinese);
+                startActivity(myIntent);
+            }
+        });
    /*     table1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

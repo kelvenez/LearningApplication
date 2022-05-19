@@ -16,30 +16,27 @@ import java.util.List;
 
 
 public class DAOtable {
-    ChineseStudyRoom chineseStudyRoom;
+    private static final String TAG = "Testing" ;
     private DatabaseReference databaseReference;
-    private List<String> result = new ArrayList<String>();
-    public interface  DataStatus{
-        void DataIsLoad(List<Boolean> tables, List<Integer> Key);
+    private List<Boolean> result = new ArrayList<Boolean>();
+    public interface  firebaseCallback{
+        void onCallback(List<Boolean> tablesStatus);
     }
-
-
     public DAOtable() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("table").child("id");
+        readData(new firebaseCallback() {
+            @Override
+            public void onCallback(List<Boolean> tablesStatus) {
+                     for(Boolean k : tablesStatus)
+                         result.add(k);
+                     Log.d(TAG,"DAO TableStatus:"+tablesStatus);
+                     Log.d(TAG,"DAO Result:"+result);
+            }
+        });
     }
 
-    public DAOtable(ChineseStudyRoom chineseStudyRoom) {
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference("table").child("id");
-        this.chineseStudyRoom = chineseStudyRoom;
-    }
-
-    public void pushMessage(String testing) {
-      //  databaseReference.child("table").setValue(testing);
-    }
-    
-    public void setMessage(){
+    public void readData(firebaseCallback firebasecallback){
         List<Boolean> keys = new ArrayList<Boolean>();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -47,7 +44,7 @@ public class DAOtable {
                 for(DataSnapshot key : snapshot.getChildren()){
                     keys.add(key.getValue(Boolean.class));
                 }
-                chineseStudyRoom.updateChange(keys);
+                firebasecallback.onCallback(keys);
             }
 
             @Override
@@ -57,24 +54,10 @@ public class DAOtable {
         });
     }
 
-    public List<Boolean> getMessage(){
-        List<Boolean> keys = new ArrayList<>();
-        databaseReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    for(DataSnapshot key : task.getResult().getChildren()){
-                        keys.add(key.getValue(Boolean.class));
-                    }
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                }
-            }
-        });
-        return keys;
+
+    public List<Boolean> getResult() {
+        return result;
     }
- }
+}
 
 
