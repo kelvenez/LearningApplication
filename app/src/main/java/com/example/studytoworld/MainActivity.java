@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent myIntent = new Intent(MainActivity.this,ChineseStudyRoom.class);
                 myIntent.putExtra("ChineseRoom",chinese);
                 myIntent.putExtra("uid",uid);
+                myIntent.putExtra("email",email);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("userName",userName);
                 startActivity(myIntent);
             }
         });
@@ -71,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent myIntent = new Intent(MainActivity.this,EnglishStudyRoom.class);
                 myIntent.putExtra("EnglishRoom",english);
                 myIntent.putExtra("uid",uid);
+                myIntent.putExtra("email",email);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("userName",userName);
                 startActivity(myIntent);
             }
         });

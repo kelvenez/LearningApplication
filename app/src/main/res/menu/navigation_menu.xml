@@ -29,11 +29,4 @@
         android:id="@+id/help"
         android:icon="@drawable/help"
         android:title="" />
-    <item
-        android:id="@+id/chatroom"
-        android:title="chatroom"/>
-    <item
-        android:id="@+id/musicpage"
-        android:title="music"/>
-
 </menu>
