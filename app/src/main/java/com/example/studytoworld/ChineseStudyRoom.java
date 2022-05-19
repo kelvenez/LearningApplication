@@ -70,7 +70,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
 
         //time and achievement
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime");
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime");
         existedTotalTime=0;
         existedSubjectTime=0;
         currentTime=0;
@@ -79,12 +79,8 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
-                    existedTotalTime=snapshot.child("Total").getValue(int.class);
-                    if(snapshot.child("Subject")==null){
-                        timerReference.child("Subject").child("Chinese").setValue(0);
-                        timerReference.child("Subject").child("English").setValue(0);
-                    }
-                    existedSubjectTime=snapshot.child("Subject").child(studyroom.getSubject()).getValue(int.class);
+                    existedTotalTime=snapshot.child("totalStudyTime").getValue(Integer.class);
+                    existedSubjectTime = snapshot.child("Subject").child(studyroom.getSubject()).getValue(Integer.class);
                 }
 
             }

@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this,ChineseStudyRoom.class);
                 myIntent.putExtra("ChineseRoom",chinese);
+                myIntent.putExtra("uid",uid);
                 startActivity(myIntent);
             }
         });
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 Intent myIntent = new Intent(MainActivity.this,EnglishStudyRoom.class);
                 myIntent.putExtra("EnglishRoom",english);
+                myIntent.putExtra("uid",uid);
                 startActivity(myIntent);
             }
         });

@@ -139,7 +139,7 @@ public class CreateLearningSchedule extends AppCompatActivity {
         //date = dateTextView.getText().toString();
         //time = timeTextView .getText().toString();
 
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users").child(uid).child("Schedules");
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users");
         //Query checkUser = reference.orderByChild("password").equalTo(password);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -161,7 +161,7 @@ public class CreateLearningSchedule extends AppCompatActivity {
                                 ++id;
                                 newScheduleRef.child(Integer.toString(id)).setValue(new Schedule(id, subject, year, month, day, hour, minute));
                             } else {
-                                newScheduleRef.child("Schedules").child(Integer.toString(0)).setValue(new Schedule(0, subject, year, month, day, hour, minute));
+                                reference.child(uid).child("Schedules").child(Integer.toString(0)).setValue(new Schedule(0, subject, year, month, day, hour, minute));
                             }
                         }
 
