@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyToWorld">
+        <activity
+            android:name=".StartActivity"
+            android:exported="true">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -21,25 +30,18 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_key" />
 
-       <activity
+        <activity
             android:name=".EnglishStudyRoom"
             android:exported="true" />
-
         <activity
             android:name=".HelpAndInformation.HelpAndInformation"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Schedule.LearningSchedule"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Schedule.CreateLearningSchedule"
-            android:exported="true" >
-        </activity>
-
+            android:exported="true"></activity>
 
         <receiver android:name=".AlarmReceiver" />
 
@@ -54,8 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
 
         <receiver android:name=".AlarmReceiver" />
 
@@ -67,13 +68,11 @@
             android:exported="true" />
         <activity
             android:name=".ChineseStudyRoom"
-            android:exported="true"
-            >
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MusicPlay"
             android:exported="true" />
-        <activity android:name=".MusicPlayerActivity"></activity>
+        <activity android:name=".MusicPlayerActivity" />
         <activity
             android:name=".ChatRoomTitleActivity"
             android:exported="true" />
@@ -83,13 +82,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"
