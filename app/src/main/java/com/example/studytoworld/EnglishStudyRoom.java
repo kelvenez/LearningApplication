@@ -43,7 +43,6 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         DrawerLayout drawerLayout = findViewById(R.id.englishDraw);
         table = new ArrayList<ImageButton>();
         studyroom =  getIntent().getExtras().getParcelable("EnglishRoom");
-        studyroom.userGetInside();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
         setContentView(R.layout.activity_english_study_room); // activity_chinese_study_room

@@ -24,13 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -65,7 +58,6 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         DrawerLayout drawerLayout = findViewById(R.id.chineseDraw);
         table = new ArrayList<ImageButton>();
         studyroom =  getIntent().getExtras().getParcelable("ChineseRoom");
-        studyroom.userGetInside();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
         setContentView(R.layout.activity_chinese_study_room); // activity_chinese_study_room
@@ -183,7 +175,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         dialogBuilder = new AlertDialog.Builder(this);
         final View tablePopUpView = getLayoutInflater().inflate(R.layout.popup, null);
         newPopUp_cancel = (ImageButton) tablePopUpView.findViewById(R.id.cancelButton);
-        TextView timerText =  tablePopUpView.findViewById(R.id.timerTextpopup);
+        TextView timerText = tablePopUpView.findViewById(R.id.timerTextpopup);
         dialogBuilder.setView(tablePopUpView);
         dialog = dialogBuilder.create();
         dialog.getWindow().setDimAmount(0);
@@ -224,7 +216,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
             public void onClick(View view) {
                 //define the cancel function
                 dialog.dismiss();
-                pushMessage(Integer.toString(table_ID),true);
+                pushMessage(Integer.toString(table_ID), true);
                 timerTask.cancel();
                 checkAchievement();
                 addUserTime();
