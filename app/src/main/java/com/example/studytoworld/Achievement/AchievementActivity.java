@@ -53,8 +53,8 @@ public class AchievementActivity extends AppCompatActivity {
         uid = intent.getStringExtra("uid");
 
         totalLearningTime = findViewById(R.id.total_learning_time);
-        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("totalStudyTime");
-        studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime").child("Subject");
+        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("totalStudyTime");
+        studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("Subject");
         firstSubject = findViewById(R.id.first_subject);
         secondSubject = findViewById(R.id.second_subject);
         thirdSubject = findViewById(R.id.third_subject);
@@ -91,7 +91,7 @@ public class AchievementActivity extends AppCompatActivity {
         totalStudyTimeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int temp = snapshot.getValue(int.class); //This got problem
+                Integer temp = snapshot.getValue(Integer.class); //This got problem
                 totalLearningTime.setText(Integer.toString(temp));
             }
 

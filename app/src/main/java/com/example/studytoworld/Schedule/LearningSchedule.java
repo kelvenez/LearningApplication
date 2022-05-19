@@ -54,14 +54,6 @@ public class LearningSchedule extends AppCompatActivity {
         uid=intent.getStringExtra("uid");
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Schedules");
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime");
-        existedTime=0;
-        currentTime=0;
-        timeStop= findViewById(R.id.timer_stop);
-        timer = new Timer();
-        startTimer();
-        systemAchievementList = new ArrayList<>();
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -94,109 +86,6 @@ public class LearningSchedule extends AppCompatActivity {
             }
         });
 
-        timerReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot!=null){
-                    existedTime=snapshot.child("Total").getValue(int.class); //This got problem
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        timeStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopCounting();
-            }
-        });
-    }
-
-    private void stopCounting() {
-        timer.cancel();
-        currentTime=(int) Math.round(currentTime);
-        checkAchievement();
-        addUserTime();
-    }
-
-    private void addUserTime() {
-        int time = existedTime;
-        time = time + currentTime;
-        timerReference.child("Total").setValue(time);
-    }
-
-    private void checkAchievement() {
-        DatabaseReference achievementListRef = FirebaseDatabase.getInstance().getReference("achievement");
-        //get system achievements and save them in an arrayList
-        achievementListRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Achievement achievement = dataSnapshot.getValue(Achievement.class);
-                    systemAchievementList.add(achievement);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        //get user achievements;
-        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Achievement");
-        userAchievementRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot!=null) {
-                    int sumOfExistedTimeAndCurrentTime = existedTime + currentTime;
-                    for (int i = 0; i < systemAchievementList.size(); ++i) {
-                        Achievement systemAchievementItem = systemAchievementList.get(i);
-                        //fulfil condition
-                        if (sumOfExistedTimeAndCurrentTime >= systemAchievementItem.getCondition()) {
-                            //check if the user already got the achievement
-                            boolean haveAlready = false;
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                Achievement achievement = dataSnapshot.getValue(Achievement.class);
-                                if (achievement.getCondition() == systemAchievementItem.getCondition()) {
-                                    haveAlready = true;
-                                    break;
-                                }
-                            }
-                            if (haveAlready == false) {
-                                //add to user database and show a congratulation notification
-                                userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
-                                Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-    }
-
-    private void startTimer() {
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                //runOnUiThread(new Runnable() {
-                    //@Override
-                   // public void run() {
-                        currentTime++;
-                    //}
-                //});
-            }
-        };
-        timer.scheduleAtFixedRate(timerTask,0,1000);
     }
 
     private void moveToCreateSchedulePage() {

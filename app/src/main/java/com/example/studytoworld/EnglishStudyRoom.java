@@ -80,10 +80,6 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
                     existedTotalTime=snapshot.child("totalStudyTime").getValue(int.class);
-                    if(snapshot.child("Subject")==null){
-                        timerReference.child("Subject").child("English").setValue(0);
-                        timerReference.child("Subject").child("English").setValue(0);
-                    }
                     existedSubjectTime=snapshot.child("Subject").child(studyroom.getSubject()).getValue(int.class);
                 }
 
