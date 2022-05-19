@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.studytoworld">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 
     <application
@@ -16,7 +12,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.StudyToWorld">
 
         <meta-data
@@ -26,21 +21,23 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_key" />
 
+       <activity
+            android:name=".EnglishStudyRoom"
+            android:exported="true" />
+
         <activity
             android:name=".HelpAndInformation.HelpAndInformation"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".Achievement.AchievementActivity"
+            android:name=".Schedule.LearningSchedule"
             android:exported="true" >
 
         </activity>
-
         <activity
-            android:name=".Information.NearbyLibrary"
+            android:name=".Schedule.CreateLearningSchedule"
             android:exported="true" >
-
         </activity>
 
         <activity
@@ -55,10 +52,14 @@
         <receiver android:name=".AlarmReceiver" />
 
         <activity
+            android:name=".Achievement.AchievementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Information.NearbyLibrary"
+            android:exported="true" />
+        <activity
             android:name=".UserProfile.UserProfile"
-            android:exported="true">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Login"
             android:exported="true" >

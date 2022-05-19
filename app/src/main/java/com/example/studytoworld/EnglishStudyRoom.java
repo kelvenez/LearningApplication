@@ -22,19 +22,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ChineseStudyRoom extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+public class EnglishStudyRoom extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG =  "Testing:";
     private StudyRoom studyroom;
     private List<ImageButton> table;
@@ -43,18 +36,17 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
     private ImageButton newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
-//    private List<Boolean> testing = new ArrayList<>();
     Double time = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DrawerLayout drawerLayout = findViewById(R.id.chineseDraw);
+        DrawerLayout drawerLayout = findViewById(R.id.englishDraw);
         table = new ArrayList<ImageButton>();
-        studyroom =  getIntent().getExtras().getParcelable("ChineseRoom");
+        studyroom =  getIntent().getExtras().getParcelable("EnglishRoom");
         studyroom.userGetInside();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
-        setContentView(R.layout.activity_chinese_study_room); // activity_chinese_study_room
+        setContentView(R.layout.activity_english_study_room); // activity_chinese_study_room
         getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -72,7 +64,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
 
             }
         });
-        findViewById(R.id.imageMenuChinese).setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.imageMenuEnglish).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 drawerLayout.openDrawer(GravityCompat.START);
@@ -86,62 +78,32 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
     public void updateChange(List<Boolean> result){
         this.result = result;
         Log.d(TAG, "updateChange: " + result);
-         for(int i=0; i<16; i++) {
+        for(int i=0; i<16; i++) {
             int buttonId = this.getResources().getIdentifier("table"+i, "id", this.getPackageName());
             table.add((ImageButton)findViewById(buttonId));
             if(result.get(i) == true) {
                 int finalI = i;
                 table.get(i).setImageResource(R.drawable.table1);
                 table.get(i).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    pushMessage(Integer.toString(finalI),false);
-                    createNewTableDialog(finalI);
-                }
-            });
+                    @Override
+                    public void onClick(View view) {
+                        pushMessage(Integer.toString(finalI),false);
+                        createNewTableDialog(finalI);
+                    }
+                });
             }
             else
                 table.get(i).setImageResource(R.drawable.tableonclick);
-            }
         }
+    }
 
 
     public void pushMessage(String table_id , Boolean value) {
-         databaseReference.child(table_id).setValue(value);
+        databaseReference.child(table_id).setValue(value);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        item.setChecked(true);
-        if (id == R.id.home) {
-            // Handle the home action
-            Intent myIntent = new Intent(this, MainActivity.class);
-            this.startActivity(myIntent);
-        }
-        else if (id == R.id.achievement) {
-            // Handle the achievement action
-            Intent myIntent = new Intent(this,Register.class);
-            this.startActivity(myIntent);
-        }
-        else if (id == R.id.schedule)
-        {
-            // Handle the schedule action
-            Intent myIntent = new Intent(this,ChineseStudyRoom.class);
-            this.startActivity(myIntent);
-        }/*
-       else if(id == R.id.profile)
-       {
-       //Handle the profile action
-       }
-       else if(id == R.id.help)
-       {
-       //Handle the help and information action
-       }*/
-        return true;
-    }
-}
+
+
 
     private void createNewTableDialog(int i) {
         dialogBuilder = new AlertDialog.Builder(this);
@@ -193,17 +155,37 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
 
     }
 
-//    public void updateChange(List<Boolean> keys){
-//        Log.d(TAG, "createNewTableDialog: " + testing);
-//        this.testing = keys;
-//        for(int i=0; i<16; i++) {
-//            int buttonId = this.getResources().getIdentifier("table"+i, "id", this.getPackageName());
-//            table.add((ImageButton)findViewById(buttonId));
-//            table.get(i).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    createNewTableDialog();
-//                }
-//            });
-//        }
-//    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        item.setChecked(true);
+        if (id == R.id.home) {
+            // Handle the home action
+            Intent myIntent = new Intent(this, MainActivity.class);
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.achievement) {
+            // Handle the achievement action
+            Intent myIntent = new Intent(this,Register.class);
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.schedule)
+        {
+            // Handle the schedule action
+            Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+            this.startActivity(myIntent);
+        }/*
+       else if(id == R.id.profile)
+       {
+       //Handle the profile action
+       }
+       else if(id == R.id.help)
+       {
+       //Handle the help and information action
+       }*/
+        return true;
+    }
+}
+
+
