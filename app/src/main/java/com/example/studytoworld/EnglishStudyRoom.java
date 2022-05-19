@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
     private List<ImageButton> table;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private ImageButton newPopUp_cancel;
+    private Button newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
     Double time = 0.0;
@@ -108,10 +109,12 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
     private void createNewTableDialog(int i) {
         dialogBuilder = new AlertDialog.Builder(this);
         final View tablePopUpView = getLayoutInflater().inflate(R.layout.popup, null);
-        newPopUp_cancel = (ImageButton) tablePopUpView.findViewById(R.id.cancelButton);
+        newPopUp_cancel = (Button) tablePopUpView.findViewById(R.id.cancelButton);
         TextView timerText =  tablePopUpView.findViewById(R.id.timerTextpopup);
         dialogBuilder.setView(tablePopUpView);
         dialog = dialogBuilder.create();
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.getWindow().setDimAmount(0);
         dialog.show();
         int table_ID = i;
