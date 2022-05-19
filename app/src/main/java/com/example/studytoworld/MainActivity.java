@@ -14,8 +14,12 @@ import android.widget.ImageButton;
 import android.view.View;
 import android.os.Bundle;
 
+import com.example.studytoworld.Achievement.AchievementActivity;
+import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
+import com.example.studytoworld.Schedule.Schedule;
+import com.example.studytoworld.UserProfile.UserProfile;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -74,23 +78,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.achievement) {
             // Handle the achievement action
-            Intent myIntent = new Intent(this,Register.class);
+            Intent myIntent = new Intent(this,AchievementActivity.class);
             this.startActivity(myIntent);
         }
         else if (id == R.id.schedule)
         {
             // Handle the schedule action
-            Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+            Intent myIntent = new Intent(this, LearningSchedule.class);
             this.startActivity(myIntent);
-        }/*
-       else if(id == R.id.profile)
-       {
-       //Handle the profile action
-       }
-       else if(id == R.id.help)
-       {
-       //Handle the help and information action
-       }*/
+        } else if(id == R.id.profile){
+           //Handle the profile action
+           Intent myIntent = new Intent(this, UserProfile.class);
+           this.startActivity(myIntent);
+           }
+        else if(id == R.id.help){
+           //Handle the help and information action
+           Intent myIntent = new Intent(this, HelpAndInformation.class);
+           this.startActivity(myIntent);
+        }
         else if(id == R.id.chatroom)
         {
             //Handle the chatroom action
