@@ -9,12 +9,21 @@ import android.content.Intent;
 import android.content.pm.ApkChecksum;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.studytoworld.Achievement.Achievement;
+import com.example.studytoworld.Achievement.AchievementActivity;
+import com.example.studytoworld.ChatRoomTitleActivity;
+import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
+import com.example.studytoworld.MainActivity;
+import com.example.studytoworld.MusicPlay;
 import com.example.studytoworld.R;
+import com.example.studytoworld.UserProfile.StaticUserInfo;
+import com.example.studytoworld.UserProfile.UserProfile;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LearningSchedule extends AppCompatActivity {
+public class LearningSchedule extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
@@ -48,6 +57,10 @@ public class LearningSchedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_schedule);
 
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
+
         recyclerView = findViewById(R.id.schedule_list);
         button = findViewById(R.id.create_schedule);
         Intent intent = getIntent();
@@ -65,8 +78,8 @@ public class LearningSchedule extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null) {
+                    list.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
                         Schedule schedule = dataSnapshot.getValue(Schedule.class);
                         list.add(schedule);
                     }
@@ -92,5 +105,61 @@ public class LearningSchedule extends AppCompatActivity {
         Intent intent =new Intent(LearningSchedule.this,CreateLearningSchedule.class);
         intent.putExtra("uid",uid);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        item.setChecked(true);
+        if (id == R.id.home) {
+            // Handle the home action
+            Intent myIntent = new Intent(this, MainActivity.class);
+            myIntent.putExtra("email",StaticUserInfo.getEmail());
+            myIntent.putExtra("password", StaticUserInfo.getPassword());
+            myIntent.putExtra("userName", StaticUserInfo.getUserName());
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.achievement) {
+            // Handle the achievement action
+            Intent myIntent = new Intent(this, AchievementActivity.class);
+            myIntent.putExtra("uid",uid);
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.schedule)
+        {
+            // Handle the schedule action
+            Intent myIntent = new Intent(this, LearningSchedule.class);
+            myIntent.putExtra("uid",uid);
+            this.startActivity(myIntent);
+        } else if(id == R.id.profile){
+            //Handle the profile action
+            Intent myIntent = new Intent(this, UserProfile.class);
+            myIntent.putExtra("uid",uid);
+            myIntent.putExtra("email",StaticUserInfo.getEmail());
+            myIntent.putExtra("password", StaticUserInfo.getPassword());
+            myIntent.putExtra("userName", StaticUserInfo.getUserName());
+            this.startActivity(myIntent);
+        }
+        else if(id == R.id.help){
+            //Handle the help and information action
+            Intent myIntent = new Intent(this, HelpAndInformation.class);
+            myIntent.putExtra("uid",uid);
+            this.startActivity(myIntent);
+        }
+        else if(id == R.id.chatroom)
+        {
+            //Handle the chatroom action
+            Intent myIntent = new Intent(this, ChatRoomTitleActivity.class);
+            myIntent.putExtra("uid",uid);
+            myIntent.putExtra("userName", StaticUserInfo.getUserName());
+            //pass user name if ness
+            this.startActivity(myIntent);
+        } else if(id == R.id.music){
+            //Handle the chatroom action
+            Intent myIntent = new Intent(this, MusicPlay.class);
+            this.startActivity(myIntent);
+        }
+        return true;
     }
 }

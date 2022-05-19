@@ -55,7 +55,7 @@ public class CreateLearningSchedule extends AppCompatActivity {
     int year;
     int hour;
     int minute;
-    String[] items = {"Chinese", "English", "Mathematics"};
+    String[] items = {"Chinese", "English"};
     AutoCompleteTextView subjectTextView;
     ArrayAdapter<String> adapterItems;
     @Override
@@ -95,8 +95,11 @@ public class CreateLearningSchedule extends AppCompatActivity {
                 //Date Picker Dialog
                 picker = new DatePickerDialog(CreateLearningSchedule.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        dateTextView.setText(day +"/" + (month+1) + "/" + year);
+                    public void onDateSet(DatePicker datePicker, int displayedYear, int displayedMonth, int displayedDay) {
+                        dateTextView.setText(displayedDay +"/" + (displayedMonth+1) + "/" + displayedYear);
+                        year = displayedYear;
+                        month = displayedMonth;
+                        day = displayedDay;
                     }
                 }, year, month, day);
                 picker.show();

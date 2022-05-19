@@ -159,6 +159,11 @@ public class EditUserProfile extends AppCompatActivity {
 
         if(isUserNameChanged()|| isPasswordChanged()||isEmailChanged()){
             Toast.makeText(this,"Data has been updated.", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, UserProfile.class);
+            intent.putExtra("userName", StaticUserInfo.getUserName());
+            intent.putExtra("password", StaticUserInfo.getPassword());
+            intent.putExtra("email", StaticUserInfo.getEmail());
+            startActivity(intent);
         }
         else{
             Toast.makeText(this,"Data is same and cannot be updated.", Toast.LENGTH_LONG).show();
@@ -169,6 +174,7 @@ public class EditUserProfile extends AppCompatActivity {
         if(!userName.equals(userNameTextView.getEditableText().toString())){
             reference.child(uid).child("userName").setValue(userNameTextView.getEditableText().toString());
             userName=userNameTextView.getEditableText().toString();
+            StaticUserInfo.setUserName(userName);
             return true;
         }
         else{
@@ -179,6 +185,7 @@ public class EditUserProfile extends AppCompatActivity {
         if(!password.equals(passwordTextView.getEditableText().toString())){
             reference.child(uid).child("passwd").setValue(passwordTextView.getEditableText().toString());
             password=passwordTextView.getEditableText().toString();
+            StaticUserInfo.setPassword(password);
             return true;
         }
         else{
@@ -190,6 +197,7 @@ public class EditUserProfile extends AppCompatActivity {
         if(!email.equals(emailTextView.getEditableText().toString())){
             reference.child(uid).child("email").setValue(emailTextView.getEditableText().toString());
             email=emailTextView.getEditableText().toString();
+            StaticUserInfo.setEmail(email);
             return true;
         }
         else{

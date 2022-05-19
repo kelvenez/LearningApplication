@@ -36,7 +36,7 @@ public class AchievementActivity extends AppCompatActivity {
     DatabaseReference achievementRef;
 
     TextView totalLearningTime;
-    TextView firstSubject, secondSubject, thirdSubject;
+    TextView firstSubject, secondSubject;
     DatabaseReference studyTimeRef;
     DatabaseReference totalStudyTimeRef;
     HashMap<String, Integer> subjectTimeMap;
@@ -57,7 +57,6 @@ public class AchievementActivity extends AppCompatActivity {
         studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("Subject");
         firstSubject = findViewById(R.id.first_subject);
         secondSubject = findViewById(R.id.second_subject);
-        thirdSubject = findViewById(R.id.third_subject);
         subjectTimeMap = new HashMap<>();
         newSubjectTimeMap = new String[3];
 
@@ -129,9 +128,6 @@ public class AchievementActivity extends AppCompatActivity {
             }
             else if(i==1){
                 secondSubject.setText(newSubjectTimeMap[i]);
-            }
-            else if(i==2){
-                thirdSubject.setText(newSubjectTimeMap[i]);
             }
         }
     }
