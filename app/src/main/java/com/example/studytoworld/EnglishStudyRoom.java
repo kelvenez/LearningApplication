@@ -37,7 +37,7 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
     private List<ImageButton> table;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private ImageButton newPopUp_cancel;
+    private Button newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
     //    private List<Boolean> testing = new ArrayList<>();
@@ -70,7 +70,7 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
 
         //time and achievement
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime");
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime");//This got problem
         existedTotalTime=0;
         existedSubjectTime=0;
         currentTime=0;
@@ -185,7 +185,7 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         dialogBuilder = new AlertDialog.Builder(this);
         final View tablePopUpView = getLayoutInflater().inflate(R.layout.popup, null);
 
-        newPopUp_cancel = (ImageButton) tablePopUpView.findViewById(R.id.cancelButton);
+        newPopUp_cancel = (Button) tablePopUpView.findViewById(R.id.cancelButton);
         TextView timerText = tablePopUpView.findViewById(R.id.timerTextpopup);
 
         dialogBuilder.setView(tablePopUpView);

@@ -45,6 +45,7 @@ public class AchievementActivity extends AppCompatActivity {
     String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i("test", "check1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_achievement);
 
@@ -90,7 +91,7 @@ public class AchievementActivity extends AppCompatActivity {
         totalStudyTimeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int temp = snapshot.getValue(int.class);
+                int temp = snapshot.getValue(int.class); //This got problem
                 totalLearningTime.setText(Integer.toString(temp));
             }
 

@@ -37,7 +37,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
     private List<ImageButton> table;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private ImageButton newPopUp_cancel;
+    private Button newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
 //    private List<Boolean> testing = new ArrayList<>();

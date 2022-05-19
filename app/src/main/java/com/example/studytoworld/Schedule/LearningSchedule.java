@@ -98,7 +98,7 @@ public class LearningSchedule extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot!=null){
-                    existedTime=snapshot.child("Total").getValue(int.class);
+                    existedTime=snapshot.child("Total").getValue(int.class); //This got problem
                 }
             }
 
