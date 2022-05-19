@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         StudyRoom chinese = new StudyRoom("Chinese");
+        StudyRoom english = new StudyRoom("English");
         setContentView(R.layout.activity_main);
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
         findViewById(R.id.room1).setOnClickListener(new View.OnClickListener() {
@@ -39,16 +40,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(myIntent);
             }
         });
-   /*     table1.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.room2).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                createNewTableDiaglog();
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this,EnglishStudyRoom.class);
+                myIntent.putExtra("EnglishRoom",english);
+                startActivity(myIntent);
             }
         });
-        schedule.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){moveToSchedulePage();}
-        });*/
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -60,32 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void moveToSchedulePage() {
-        Intent intent = getIntent();
-        password = intent.getStringExtra("password");
 
-        Intent intent1 = new Intent(MainActivity.this, LearningSchedule.class);
-        intent1.putExtra("password", password);
-        startActivity(intent1);
-    }
-
-    private void createNewTableDiaglog(){
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View tablePopUpView = getLayoutInflater().inflate(R.layout.popup, null);
-        newPopUp_cancel = (ImageButton) tablePopUpView.findViewById(R.id.cancelButton);
-        dialogBuilder.setView(tablePopUpView);
-        dialog = dialogBuilder.create();
-        dialog.show();
-
-        newPopUp_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //define the cancel function
-                dialog.dismiss();
-            }
-        });
-
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

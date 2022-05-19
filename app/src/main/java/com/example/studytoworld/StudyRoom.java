@@ -14,7 +14,7 @@ public class StudyRoom implements Parcelable {
     private int currentUserCounter;
     private DAOtable datalist;
     StudyRoom(String subject){
-        datalist = new DAOtable();
+        datalist = new DAOtable(subject);
         currentUserCounter = 0 ;
         tables = new ArrayList<table>(16); // new table -> create 10 -> get.10status from db.
         for(int i =0  ; i < 16 ; i++) {
@@ -73,6 +73,9 @@ public class StudyRoom implements Parcelable {
     }
 
 
+    public String getSubject() {
+        return subject;
+    }
 
     @Override
     public int describeContents() {

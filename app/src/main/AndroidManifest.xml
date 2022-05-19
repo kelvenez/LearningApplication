@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyToWorld" >
         <activity
+            android:name=".EnglishStudyRoom"
+            android:exported="true" />
+        <activity
             android:name=".Schedule.LearningSchedule"
             android:exported="true" >
         </activity>
@@ -57,9 +60,10 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

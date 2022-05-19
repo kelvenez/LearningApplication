@@ -3,14 +3,19 @@ package com.example.studytoworld;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +33,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ChineseStudyRoom extends AppCompatActivity {
+public class ChineseStudyRoom extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG =  "Testing:";
     private StudyRoom studyroom;
     private List<ImageButton> table;
@@ -42,12 +47,13 @@ public class ChineseStudyRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DrawerLayout drawerLayout = findViewById(R.id.chineseDraw);
         table = new ArrayList<ImageButton>();
         studyroom =  getIntent().getExtras().getParcelable("ChineseRoom");
         studyroom.userGetInside();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        this.databaseReference = db.getReference("table").child("id");
-        setContentView(R.layout.activity_chinese_study_room);
+        this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
+        setContentView(R.layout.activity_chinese_study_room); // activity_chinese_study_room
         getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -65,6 +71,15 @@ public class ChineseStudyRoom extends AppCompatActivity {
 
             }
         });
+        findViewById(R.id.imageMenuChinese).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.navigationChinese);
+        navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void updateChange(List<Boolean> result){
@@ -94,8 +109,38 @@ public class ChineseStudyRoom extends AppCompatActivity {
          databaseReference.child(table_id).setValue(value);
     }
 
-
-
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        item.setChecked(true);
+        if (id == R.id.home) {
+            // Handle the home action
+            Intent myIntent = new Intent(this, MainActivity.class);
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.achievement) {
+            // Handle the achievement action
+            Intent myIntent = new Intent(this,Register.class);
+            this.startActivity(myIntent);
+        }
+        else if (id == R.id.schedule)
+        {
+            // Handle the schedule action
+            Intent myIntent = new Intent(this,ChineseStudyRoom.class);
+            this.startActivity(myIntent);
+        }/*
+       else if(id == R.id.profile)
+       {
+       //Handle the profile action
+       }
+       else if(id == R.id.help)
+       {
+       //Handle the help and information action
+       }*/
+        return true;
+    }
+}
 
     private void createNewTableDialog(int i) {
         dialogBuilder = new AlertDialog.Builder(this);
@@ -165,4 +210,3 @@ public class ChineseStudyRoom extends AppCompatActivity {
 
 
 
-}

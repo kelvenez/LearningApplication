@@ -22,9 +22,9 @@ public class DAOtable {
     public interface  firebaseCallback{
         void onCallback(List<Boolean> tablesStatus);
     }
-    public DAOtable() {
+    public DAOtable(String subject) {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        databaseReference = db.getReference("table").child("id");
+        databaseReference = db.getReference(subject).child("id");
         readData(new firebaseCallback() {
             @Override
             public void onCallback(List<Boolean> tablesStatus) {

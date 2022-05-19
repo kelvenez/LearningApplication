@@ -1,187 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.gridlayout.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chineseDraw"
     android:layout_width="match_parent"
-    android:layout_height="700dp"
-    android:background="@drawable/bg"
-    android:layout_gravity="bottom"
+    android:layout_height="match_parent"
     tools:context=".ChineseStudyRoom"
-    app:rowCount="6"
-    app:columnCount="3">
+    tools:openDrawer="start">
 
 
- <ImageButton
-     android:id="@+id/table0"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:background="#00000000"
-     android:scaleType="centerCrop"
-     android:src="@drawable/table1" />
 
- <ImageButton
-     android:id="@+id/table1"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table2"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table3"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table4"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table5"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table6"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table7"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:scaleType="centerCrop"
-     android:src="@drawable/table1"
-     />
- <ImageButton
-     android:id="@+id/table8"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
-     />
- <ImageButton
-     android:id="@+id/table9"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="centerCrop"
+
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:id="@+id/studyLayout"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+
+  <LinearLayout
+      android:id="@+id/layoutToolBar"
+      android:layout_width="match_parent"
+      android:layout_height="?actionBarSize"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      android:paddingStart="30dp"
+      android:paddingEnd="30dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0">
+
+   <ImageView
+       android:id="@+id/imageMenuChinese"
+       android:layout_width="30dp"
+       android:layout_height="30dp"
+       android:src="@drawable/ic_menu"></ImageView>
+
+  </LinearLayout>
+
+  <androidx.gridlayout.widget.GridLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="bottom"
+      android:background="@drawable/bg"
+      app:columnCount="3"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.59000003"
+      app:rowCount="6"
+      tools:context=".ChineseStudyRoom">
+
+   <ImageButton
+       android:id="@+id/table0"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table1"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table2"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table3"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table4"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table5"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table6"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table7"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table8"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table9"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="centerCrop"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table101"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1"
+       android:visibility="gone"
+       tools:visibility="gone" />
+
+   <ImageButton
+       android:id="@+id/table100"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/tableonclick"
+       android:visibility="gone"
+       tools:visibility="gone" />
+
+   <ImageButton
+       android:id="@+id/table10"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table11"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table12"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table13"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:layout_marginRight="60dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table14"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+   <ImageButton
+       android:id="@+id/table15"
+       android:layout_width="80dp"
+       android:layout_height="80dp"
+       android:layout_margin="10dp"
+       android:background="#00000000"
+       android:scaleType="fitCenter"
+       android:src="@drawable/table1" />
+
+
+  </androidx.gridlayout.widget.GridLayout>
+
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
+ <com.google.android.material.navigation.NavigationView
+
+     android:layout_width="120dp"
+     android:layout_height="match_parent"
+     android:id="@+id/navigationChinese"
+     app:menu="@menu/navigation_menu"
+     app:itemIconSize="120dp"
+     app:itemHorizontalPadding="0dp"
+     android:layout_gravity="start"
      />
 
- <ImageButton
-     android:id="@+id/table101"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:layout_margin="10dp"
-     android:background="#00000000"
-     android:scaleType="fitCenter"
-     android:src="@drawable/table1"
-     android:visibility="gone"
-     tools:visibility="gone" />
 
- <ImageButton
-     android:id="@+id/table100"
-     android:layout_width="100dp"
-     android:layout_height="100dp"
-     android:layout_margin="10dp"
-     android:background="#00000000"
-     android:scaleType="fitCenter"
-     android:src="@drawable/tableonclick"
-     android:visibility="gone"
-     tools:visibility="gone" />
- <ImageButton
-     android:id="@+id/table10"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
- <ImageButton
-     android:id="@+id/table11"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
- <ImageButton
-     android:id="@+id/table12"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
- <ImageButton
-     android:id="@+id/table13"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:layout_marginRight="60dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
- <ImageButton
-     android:id="@+id/table14"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
- <ImageButton
-     android:id="@+id/table15"
-     android:background="#00000000"
-     android:layout_height="100dp"
-     android:layout_width="100dp"
-     android:layout_margin="10dp"
-     android:src="@drawable/table1"
-     android:scaleType="fitCenter"
-     />
-
-</androidx.gridlayout.widget.GridLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
