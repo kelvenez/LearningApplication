@@ -40,13 +40,6 @@ public class LearningSchedule extends AppCompatActivity implements NavigationVie
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
 
-    DatabaseReference timerReference;
-    Button timeStop;
-    int existedTime;
-    int currentTime;
-    Timer timer;
-    TimerTask timerTask;
-    ArrayList<Achievement> systemAchievementList;
 
     ScheduleAdapter scheduleAdapter;
     ArrayList<Schedule> list;

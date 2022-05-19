@@ -2,6 +2,7 @@ package com.example.studytoworld.Schedule;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -43,7 +44,7 @@ public class CreateLearningSchedule extends AppCompatActivity {
     private Calendar timeCalendar;
     private EditText timeTextView;
     private DatePickerDialog picker;
-    private Button create;
+    private AppCompatButton create;
     private ActivityCreateLearningScheduleBinding binding;
     String uid;
 

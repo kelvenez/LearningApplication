@@ -74,20 +74,19 @@
                     tools:ignore="OnClick" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/create_schedule"
             android:layout_width="230dp"
             android:layout_marginLeft="150dp"
             android:layout_height="60dp"
-            android:background="#000000"
+            android:background="#ff5500"
             android:gravity="center"
             android:text="Create"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.722"
-            app:rippleColor="#00000000" />
+            >
+        </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 </ScrollView>
