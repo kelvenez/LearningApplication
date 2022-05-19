@@ -70,13 +70,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
-                    android:focusable="false" />
+                    android:focusable="false"
+                    tools:ignore="OnClick" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
         <Button
             android:id="@+id/create_schedule"
             android:layout_width="230dp"
-
+            android:layout_marginLeft="150dp"
             android:layout_height="60dp"
             android:background="#000000"
             android:gravity="center"

@@ -21,6 +21,7 @@ import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
 import com.example.studytoworld.Schedule.Schedule;
+import com.example.studytoworld.UserProfile.StaticUserInfo;
 import com.example.studytoworld.UserProfile.UserProfile;
 import com.google.android.material.navigation.NavigationView;
 
@@ -99,10 +100,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.home) {
             // Handle the home action
             Intent myIntent = new Intent(this, MainActivity.class);
-            myIntent.putExtra("uid",uid);
-            myIntent.putExtra("email",email);
-            myIntent.putExtra("password", password);
-            myIntent.putExtra("userName",userName);
+            myIntent.putExtra("email",StaticUserInfo.getEmail());
+            myIntent.putExtra("password", StaticUserInfo.getPassword());
+            myIntent.putExtra("userName", StaticUserInfo.getUserName());
             this.startActivity(myIntent);
         }
         else if (id == R.id.achievement) {
@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            //Handle the profile action
            Intent myIntent = new Intent(this, UserProfile.class);
            myIntent.putExtra("uid",uid);
-           myIntent.putExtra("email",email);
-           myIntent.putExtra("password", password);
-           myIntent.putExtra("userName",userName);
+           myIntent.putExtra("email",StaticUserInfo.getEmail());
+           myIntent.putExtra("password", StaticUserInfo.getPassword());
+           myIntent.putExtra("userName", StaticUserInfo.getUserName());
            this.startActivity(myIntent);
            }
         else if(id == R.id.help){
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Handle the chatroom action
             Intent myIntent = new Intent(this,ChatRoomTitleActivity.class);
             myIntent.putExtra("uid",uid);
-            myIntent.putExtra("userName",userName);
+            myIntent.putExtra("userName", StaticUserInfo.getUserName());
             //pass user name if ness
             this.startActivity(myIntent);
         } else if(id == R.id.music){

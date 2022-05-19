@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.os.Bundle;
 import android.text.TextUtils;
+
+import com.example.studytoworld.UserProfile.StaticUserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -146,6 +148,9 @@ public class Login extends AppCompatActivity {
                     emailFromDB = snapshot.child(userID).child("email").getValue(String.class);
                     passwordFromDB = snapshot.child(userID).child("password").getValue(String.class);
                     idFromDB = snapshot.child(userID).child("id").getValue(String.class);
+                    StaticUserInfo.setUserName(userNameFromDB);
+                    StaticUserInfo.setPassword(passwordFromDB);
+                    StaticUserInfo.setEmail(emailFromDB);
                     Intent intent1 = new Intent(Login.this, MainActivity.class);
                     intent1.putExtra("email",emailFromDB);
                     intent1.putExtra("password", passwordFromDB);
