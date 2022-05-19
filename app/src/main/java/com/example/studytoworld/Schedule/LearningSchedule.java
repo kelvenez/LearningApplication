@@ -41,7 +41,7 @@ public class LearningSchedule extends AppCompatActivity {
 
     ScheduleAdapter scheduleAdapter;
     ArrayList<Schedule> list;
-    String password;
+    String uid;
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +51,10 @@ public class LearningSchedule extends AppCompatActivity {
         recyclerView = findViewById(R.id.schedule_list);
         button = findViewById(R.id.create_schedule);
         Intent intent = getIntent();
-        password=intent.getStringExtra("password");
+        uid=intent.getStringExtra("uid");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Schedules");
-        timerReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Schedules");
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child(uid).child("StudyTime");
         existedTime=0;
         currentTime=0;
         timeStop= findViewById(R.id.timer_stop);
@@ -145,7 +145,7 @@ public class LearningSchedule extends AppCompatActivity {
             }
         });
         //get user achievements;
-        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Achievement");
+        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("Achievement");
         userAchievementRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -198,7 +198,7 @@ public class LearningSchedule extends AppCompatActivity {
 
     private void moveToCreateSchedulePage() {
         Intent intent =new Intent(LearningSchedule.this,CreateLearningSchedule.class);
-        intent.putExtra("password",password);
+        intent.putExtra("uid",uid);
         startActivity(intent);
     }
 }

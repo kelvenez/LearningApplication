@@ -12,9 +12,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.studytoworld.Achievement.Achievement;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +41,17 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
     private List<Boolean> result = new ArrayList<Boolean>();
 //    private List<Boolean> testing = new ArrayList<>();
     Double time = 0.0;
+
+    DatabaseReference timerReference;
+    Button timeStop;
+    int existedTotalTime;
+    int existedSubjectTime;
+    int currentTime;
+    Timer timer;
+    TimerTask timerTask;
+    ArrayList<Achievement> systemAchievementList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +63,28 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_chinese_study_room); // activity_chinese_study_room
         getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
+
+        //time and achievement
+        timerReference = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("StudyTime");
+        existedTotalTime=0;
+        existedSubjectTime=0;
+        currentTime=0;
+        systemAchievementList = new ArrayList<>();
+        timerReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot!=null){
+                    existedTotalTime=snapshot.child("Total").getValue(int.class);
+                    existedSubjectTime=snapshot.child("Subject").child(studyroom.getSubject()).getValue(int.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //end of time and achievement
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -94,8 +130,8 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
             }
             else
                 table.get(i).setImageResource(R.drawable.tableonclick);
-            }
-        }
+         }
+    }
 
 
     public void pushMessage(String table_id , Boolean value) {
@@ -159,6 +195,8 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
 
                     private String getTimerText() {
                         int rounded = (int) Math.round(time);
+                        currentTime = rounded;
+
                         int seconds = ((rounded % 86400) % 3600) % 60;
                         int minutes = ((rounded % 86400) % 3600) / 60;
                         int hours = ((rounded % 86400) / 3600);
@@ -180,8 +218,73 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
                 dialog.dismiss();
                 pushMessage(Integer.toString(table_ID), true);
                 timerTask.cancel();
+                checkAchievement();
+                addUserTime();
             }
         });
+
+    }
+
+    private void addUserTime() {
+        int newTotaltime = existedTotalTime;
+        newTotaltime = newTotaltime + currentTime;
+        int newSubjectTime = existedSubjectTime;
+        newSubjectTime = newSubjectTime + currentTime;
+        timerReference.child("Total").setValue(newTotaltime);
+        timerReference.child("Subject").child(studyroom.getSubject()).setValue(newSubjectTime);
+    }
+
+    private void checkAchievement() {
+        DatabaseReference achievementListRef = FirebaseDatabase.getInstance().getReference("achievement");
+        //get system achievements and save them in an arrayList
+        achievementListRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    Achievement achievement = dataSnapshot.getValue(Achievement.class);
+                    systemAchievementList.add(achievement);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        //get user achievements;
+        DatabaseReference userAchievementRef = FirebaseDatabase.getInstance().getReference("users").child("abc12345678").child("Achievement");
+        userAchievementRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int sumOfExistedTimeAndCurrentTime = existedTotalTime+currentTime;
+                for(int i=0; i<systemAchievementList.size();++i){
+                    Achievement systemAchievementItem = systemAchievementList.get(i);
+                    //fulfil condition
+                    if(sumOfExistedTimeAndCurrentTime>=systemAchievementItem.getCondition()){
+                        //check if the user already got the achievement
+                        boolean haveAlready=false;
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Achievement achievement = dataSnapshot.getValue(Achievement.class);
+                            if(achievement.getCondition()==systemAchievementItem.getCondition()){
+                                haveAlready=true;
+                                break;
+                            }
+                        }
+                        if(haveAlready==false){
+                            //add to user database and show a congratulation notification
+                            userAchievementRef.child(Integer.toString(systemAchievementItem.getCondition())).setValue(systemAchievementItem);
+                            Toast.makeText(getApplicationContext(), "Congratulation,Your have accomplished an achievement", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 }
