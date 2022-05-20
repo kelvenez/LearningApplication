@@ -45,7 +45,7 @@ public class NearbyLibrary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_nearby_library);
 
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager()

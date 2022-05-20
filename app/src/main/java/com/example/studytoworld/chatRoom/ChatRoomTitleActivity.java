@@ -20,7 +20,7 @@ public class ChatRoomTitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_chatroom_title);
 
         recyclerView = findViewById(R.id.recycler_title_view);

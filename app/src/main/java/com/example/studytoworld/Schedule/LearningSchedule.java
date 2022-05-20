@@ -41,7 +41,7 @@ public class LearningSchedule extends AppCompatActivity implements NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_learning_schedule);
 
         NavigationView navigationView = findViewById(R.id.navigationView);

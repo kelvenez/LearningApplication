@@ -82,7 +82,7 @@ public class ChineseStudyRoom extends AppCompatActivity implements NavigationVie
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         this.databaseReference = db.getReference("Chinese").child("id");
         setContentView(R.layout.activity_chinese_study_room); // activity_chinese_study_room
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
 
         //time and achievement

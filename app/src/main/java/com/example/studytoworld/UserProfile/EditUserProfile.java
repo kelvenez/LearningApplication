@@ -51,7 +51,7 @@ public class EditUserProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_edit_user_profile);
 
         reference = FirebaseDatabase.getInstance().getReference("users");

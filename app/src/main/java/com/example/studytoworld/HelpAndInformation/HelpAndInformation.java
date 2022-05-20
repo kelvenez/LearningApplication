@@ -26,7 +26,7 @@ public class HelpAndInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_help_and_information);
 
         contentView = findViewById(R.id.content);

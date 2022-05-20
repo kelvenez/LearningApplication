@@ -13,7 +13,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_start);
         findViewById(R.id.loginStart).setOnClickListener(new View.OnClickListener() {
             @Override

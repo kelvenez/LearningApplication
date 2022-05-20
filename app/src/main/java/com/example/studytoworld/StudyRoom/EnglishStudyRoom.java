@@ -68,7 +68,7 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
         setContentView(R.layout.activity_english_study_room); // activity_English_study_room
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
 
         //time and achievement
