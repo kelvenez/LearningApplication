@@ -45,6 +45,7 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_user_profile);
 
         NavigationView navigationView = findViewById(R.id.navigationView);
