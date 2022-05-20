@@ -27,6 +27,7 @@ public class ChatRoomTitleActivity extends AppCompatActivity {
         noChatRoomTextView = findViewById(R.id.no_room_text);
 
         chatRoomList.add("AI");
+        chatRoomList.add("Chinese");
         chatRoomList.add("HCI");
         chatRoomList.add("MobileApp");
         chatRoomList.add("Multimedia");
