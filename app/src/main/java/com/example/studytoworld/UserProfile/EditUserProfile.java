@@ -142,7 +142,6 @@ public class EditUserProfile extends AppCompatActivity {
                         pd.setMessage("Progress: " + (int) progressPercent + "%");
                     }
                 });
-
     }
 
     private void showAllUserData() {
@@ -164,6 +163,7 @@ public class EditUserProfile extends AppCompatActivity {
             intent.putExtra("userName", StaticUserInfo.getUserName());
             intent.putExtra("password", StaticUserInfo.getPassword());
             intent.putExtra("email", StaticUserInfo.getEmail());
+            intent.putExtra("uid", uid);
             startActivity(intent);
         }
         else{
@@ -184,6 +184,7 @@ public class EditUserProfile extends AppCompatActivity {
     }
     private boolean isPasswordChanged() {
         if(!password.equals(passwordTextView.getEditableText().toString())){
+            Log.d("Password", password);
             reference.child(uid).child("passwd").setValue(passwordTextView.getEditableText().toString());
             password=passwordTextView.getEditableText().toString();
             StaticUserInfo.setPassword(password);
