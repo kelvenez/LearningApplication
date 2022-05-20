@@ -41,6 +41,7 @@ public class HelpAndInformation extends AppCompatActivity {
 
 
     public void submitQuestion() {
+        databaseReference= FirebaseDatabase.getInstance().getReference("questions");
         String content = String.valueOf(contentView.getText());
         Intent intent = getIntent();
         String userId = intent.getStringExtra("uid");

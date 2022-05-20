@@ -165,7 +165,8 @@ public class CreateLearningSchedule extends AppCompatActivity {
                                 ++id;
                                 newScheduleRef.child(Integer.toString(id)).setValue(new Schedule(id, subject, year, month, day, hour, minute));
                             } else {
-                                reference.child(uid).child("Schedules").child(Integer.toString(0)).setValue(new Schedule(0, subject, year, month, day, hour, minute));
+                                reference.child(uid).child("Schedules").child(Integer.toString(0)).
+                                        setValue(new Schedule(0, subject, year, month, day, hour, minute));
                             }
                         }
 

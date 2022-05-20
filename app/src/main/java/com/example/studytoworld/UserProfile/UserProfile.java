@@ -57,7 +57,7 @@ public class UserProfile extends AppCompatActivity implements NavigationView.OnN
         userNameTextView = findViewById(R.id.userName);
         showAllUserData();
 
-        storageReference= FirebaseStorage.getInstance().getReference("images/"+ uid);
+        storageReference= FirebaseStorage.getInstance().getReference().child("images/"+uid);
         profileView = findViewById(R.id.profile_image);
         showProfileImage();
 

@@ -53,7 +53,7 @@ public class AchievementActivity extends AppCompatActivity {
         uid = intent.getStringExtra("uid");
 
         totalLearningTime = findViewById(R.id.total_learning_time);
-        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("totalStudyTime");
+
         studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("Subject");
         firstSubject = findViewById(R.id.first_subject);
         secondSubject = findViewById(R.id.second_subject);
@@ -87,11 +87,12 @@ public class AchievementActivity extends AppCompatActivity {
             }
         });
 
+        totalStudyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("totalStudyTime");
         totalStudyTimeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Integer temp = snapshot.getValue(Integer.class); //This got problem
-                totalLearningTime.setText(Integer.toString(temp));
+                totalLearningTime.setText(Integer.toString(temp)+" hours");
             }
 
             @Override
@@ -99,6 +100,7 @@ public class AchievementActivity extends AppCompatActivity {
 
             }
         });
+        studyTimeRef = FirebaseDatabase.getInstance().getReference("users").child(uid).child("studyTime").child("Subject");
         studyTimeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -106,6 +108,8 @@ public class AchievementActivity extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Integer time = dataSnapshot.getValue(Integer.class);
                         String subject = dataSnapshot.getKey();
+                        Log.d("Subject", subject);
+                        Log.d("SubjectStudyTime", String.valueOf(time));
                         subjectTimeMap.put(subject, time);
                     }
                     //Log.d("TestingAchievement", String.valueOf(subjectTimeMap));
@@ -148,12 +152,9 @@ public class AchievementActivity extends AppCompatActivity {
                     }
                 }
             }
-            //Log.d("TestingAchievement", String.valueOf(max_key));
             temp.put(max_key,max);
             newSubjectTimeMap[index] = max_key;
             ++index;
-            //copy.remove(max_key);
         }
-        //Log.d("TestingAchievement", String.valueOf(temp));
     }
 }
