@@ -1,14 +1,15 @@
-package com.example.studytoworld;
+package com.example.studytoworld.music;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.example.studytoworld.R;
 
 import java.io.IOException;
 import java.util.ArrayList;

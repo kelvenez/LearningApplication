@@ -1,11 +1,9 @@
-package com.example.studytoworld;
+package com.example.studytoworld.Login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,8 +11,7 @@ import android.widget.Toast;
 import android.text.TextUtils;
 import android.content.Intent;
 
-import com.example.studytoworld.Achievement.Achievement;
-import com.example.studytoworld.Schedule.Schedule;
+import com.example.studytoworld.R;
 import com.example.studytoworld.UserProfile.AchievementList;
 import com.example.studytoworld.UserProfile.ScheduleList;
 import com.example.studytoworld.UserProfile.StudyTime;
@@ -26,10 +23,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 public class Register extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.music;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -7,22 +7,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.studytoworld.AudioModel;
+import com.example.studytoworld.R;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MusicPlay extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.music;
 
 import android.media.MediaPlayer;
 

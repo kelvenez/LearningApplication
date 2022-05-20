@@ -1,18 +1,17 @@
-package com.example.studytoworld;
+package com.example.studytoworld.chatRoom;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.BreakIterator;
+import com.example.studytoworld.R;
+
 import java.util.ArrayList;
 
 public class ChatRoomTitleAdapter extends RecyclerView.Adapter<ChatRoomTitleAdapter.ViewHolder>{

@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.StudyRoom;
 import android.util.Log;
 
 import androidx.annotation.NonNull;

@@ -1,17 +1,14 @@
-package com.example.studytoworld;
+package com.example.studytoworld.chatRoom;
 
-import android.annotation.SuppressLint;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
+import com.example.studytoworld.R;
+
 import java.util.ArrayList;
 
 public class ChatRoomTitleActivity extends AppCompatActivity {

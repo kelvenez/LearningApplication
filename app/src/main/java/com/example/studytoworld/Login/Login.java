@@ -1,9 +1,8 @@
-package com.example.studytoworld;
+package com.example.studytoworld.Login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -12,6 +11,8 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.example.studytoworld.MainActivity;
+import com.example.studytoworld.R;
 import com.example.studytoworld.UserProfile.StaticUserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;

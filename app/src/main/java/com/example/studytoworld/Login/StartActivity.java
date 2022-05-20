@@ -1,10 +1,12 @@
-package com.example.studytoworld;
+package com.example.studytoworld.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.studytoworld.R;
 
 public class StartActivity extends AppCompatActivity {
 

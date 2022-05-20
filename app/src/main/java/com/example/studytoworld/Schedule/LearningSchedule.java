@@ -6,20 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.content.pm.ApkChecksum;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.studytoworld.Achievement.Achievement;
 import com.example.studytoworld.Achievement.AchievementActivity;
-import com.example.studytoworld.ChatRoomTitleActivity;
+import com.example.studytoworld.chatRoom.ChatRoomTitleActivity;
 import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
 import com.example.studytoworld.MainActivity;
-import com.example.studytoworld.MusicPlay;
+import com.example.studytoworld.music.MusicPlay;
 import com.example.studytoworld.R;
 import com.example.studytoworld.UserProfile.StaticUserInfo;
 import com.example.studytoworld.UserProfile.UserProfile;
@@ -30,10 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LearningSchedule extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

@@ -5,10 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.Navigation;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -18,14 +16,15 @@ import android.widget.TextView;
 
 import com.example.studytoworld.Achievement.AchievementActivity;
 import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
-import com.example.studytoworld.Schedule.CreateLearningSchedule;
 import com.example.studytoworld.Schedule.LearningSchedule;
-import com.example.studytoworld.Schedule.Schedule;
+import com.example.studytoworld.StudyRoom.ChineseStudyRoom;
+import com.example.studytoworld.StudyRoom.EnglishStudyRoom;
+import com.example.studytoworld.StudyRoom.StudyRoom;
 import com.example.studytoworld.UserProfile.StaticUserInfo;
 import com.example.studytoworld.UserProfile.UserProfile;
+import com.example.studytoworld.chatRoom.ChatRoomTitleActivity;
+import com.example.studytoworld.music.MusicPlay;
 import com.google.android.material.navigation.NavigationView;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "currentUserMain";
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         email=intent.getStringExtra("email");
         password=intent.getStringExtra("password");
         userName=intent.getStringExtra("userName");
-
         StudyRoom chinese = new StudyRoom("Chinese");
         StudyRoom english = new StudyRoom("English");
         setContentView(R.layout.activity_main);
@@ -58,9 +56,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.room1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this,ChineseStudyRoom.class);
+                Intent myIntent = new Intent(MainActivity.this, ChineseStudyRoom.class);
                 myIntent.putExtra("ChineseRoom",chinese);
-                myIntent.putExtra("uid",uid);
+              //  myIntent.putExtra("uid",uid);
                 myIntent.putExtra("email",email);
                 myIntent.putExtra("password", password);
                 myIntent.putExtra("userName",userName);
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
 
             public void onClick(View v) {
-                Intent myIntent = new Intent(MainActivity.this,EnglishStudyRoom.class);
+                Intent myIntent = new Intent(MainActivity.this, EnglishStudyRoom.class);
                 myIntent.putExtra("EnglishRoom",english);
                 myIntent.putExtra("uid",uid);
                 myIntent.putExtra("email",email);
@@ -135,14 +133,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(id == R.id.chatroom)
         {
             //Handle the chatroom action
-            Intent myIntent = new Intent(this,ChatRoomTitleActivity.class);
+            Intent myIntent = new Intent(this, ChatRoomTitleActivity.class);
             myIntent.putExtra("uid",uid);
             myIntent.putExtra("userName", StaticUserInfo.getUserName());
             //pass user name if ness
             this.startActivity(myIntent);
         } else if(id == R.id.music){
             //Handle the chatroom action
-            Intent myIntent = new Intent(this,MusicPlay.class);
+            Intent myIntent = new Intent(this, MusicPlay.class);
             this.startActivity(myIntent);
         }
         return true;

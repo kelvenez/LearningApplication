@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.timer;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,6 +8,8 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.studytoworld.MainActivity;
+import com.example.studytoworld.R;
 import com.example.studytoworld.Schedule.CreateLearningSchedule;
 
 public class AlarmReceiver extends BroadcastReceiver {

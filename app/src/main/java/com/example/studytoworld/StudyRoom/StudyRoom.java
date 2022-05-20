@@ -1,10 +1,7 @@
-package com.example.studytoworld;
+package com.example.studytoworld.StudyRoom;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,7 @@ public class StudyRoom implements Parcelable {
     private String subject;
     private List<Boolean> tableID_status ;
 
-    StudyRoom(String subject){
+    public StudyRoom(String subject){
         tables = new ArrayList<table>(16); // new table -> create 10 -> get.10status from db.
         for(int i =0  ; i < 16 ; i++) {
             tables.add(i, new table(i));
@@ -29,7 +26,7 @@ public class StudyRoom implements Parcelable {
         in.readList(tableID_status,Boolean.class.getClassLoader());
         subject = in.readString();
         tables = new ArrayList<table>();
-        in.readList(tables,table.class.getClassLoader());
+        in.readList(tables, table.class.getClassLoader());
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.StudyRoom;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -7,7 +7,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,12 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.studytoworld.Achievement.Achievement;
-import com.example.studytoworld.Achievement.AchievementActivity;
-import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
-import com.example.studytoworld.Schedule.LearningSchedule;
-import com.example.studytoworld.UserProfile.UserProfile;
+import com.example.studytoworld.MainActivity;
+import com.example.studytoworld.R;
+import com.example.studytoworld.Login.Register;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
@@ -45,7 +42,6 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
     private Button newPopUp_cancel;
     private DatabaseReference databaseReference;
     private List<Boolean> result = new ArrayList<Boolean>();
-    private String userNameFromDB, emailFromDB, passwordFromDB, idFromDB;
     //    private List<Boolean> testing = new ArrayList<>();
     Double time = 0.0;
 
@@ -64,18 +60,13 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         super.onCreate(savedInstanceState);
 
         Intent intent =getIntent();
-//        uid = intent.getStringExtra("uid");
+        uid = intent.getStringExtra("uid");
 
-        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        userNameFromDB = intent.getStringExtra("userName");
-        emailFromDB = intent.getStringExtra("email");
-        passwordFromDB = intent.getStringExtra("password");
-        idFromDB = intent.getStringExtra("uid");
         DrawerLayout drawerLayout = findViewById(R.id.englishDraw);
         table = new ArrayList<ImageButton>();
         studyroom =  getIntent().getExtras().getParcelable("EnglishRoom");
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        this.databaseReference = db.getReference("English").child("id");
+        this.databaseReference = db.getReference(studyroom.getSubject()).child("id");
         setContentView(R.layout.activity_english_study_room); // activity_English_study_room
         getSupportActionBar().hide();
         Log.d(TAG,"StudyRoomData" + studyroom.getTableID_status());
@@ -163,52 +154,27 @@ public class EnglishStudyRoom extends AppCompatActivity implements NavigationVie
         if (id == R.id.home) {
             // Handle the home action
             Intent myIntent = new Intent(this, MainActivity.class);
-            myIntent.putExtra("email",emailFromDB);
-            myIntent.putExtra("password", passwordFromDB);
-            myIntent.putExtra("userName",userNameFromDB);
-            myIntent.putExtra("uid",idFromDB);
             this.startActivity(myIntent);
         }
         else if (id == R.id.achievement) {
             // Handle the achievement action
-            Intent myIntent = new Intent(this, AchievementActivity.class);
-            myIntent.putExtra("uid",uid);
+            Intent myIntent = new Intent(this, Register.class);
             this.startActivity(myIntent);
         }
         else if (id == R.id.schedule)
         {
             // Handle the schedule action
-            Intent myIntent = new Intent(this, LearningSchedule.class);
-            myIntent.putExtra("uid",uid);
+            Intent myIntent = new Intent(this,EnglishStudyRoom.class);
             this.startActivity(myIntent);
-        } else if(id == R.id.profile){
-            //Handle the profile action
-            Intent myIntent = new Intent(this, UserProfile.class);
-            myIntent.putExtra("uid",uid);
-            myIntent.putExtra("email",emailFromDB);
-            myIntent.putExtra("password", passwordFromDB);
-            myIntent.putExtra("userName",userNameFromDB);
-            this.startActivity(myIntent);
-        }
-        else if(id == R.id.help){
-            //Handle the help and information action
-            Intent myIntent = new Intent(this, HelpAndInformation.class);
-            myIntent.putExtra("uid",uid);
-            this.startActivity(myIntent);
-        }
-        else if(id == R.id.chatroom)
-        {
-            //Handle the chatroom action
-            Intent myIntent = new Intent(this,ChatRoomTitleActivity.class);
-            myIntent.putExtra("uid",uid);
-            myIntent.putExtra("userName",userNameFromDB);
-            //pass user name if ness
-            this.startActivity(myIntent);
-        } else if(id == R.id.music){
-            //Handle the chatroom action
-            Intent myIntent = new Intent(this,MusicPlay.class);
-            this.startActivity(myIntent);
-        }
+        }/*
+       else if(id == R.id.profile)
+       {
+       //Handle the profile action
+       }
+       else if(id == R.id.help)
+       {
+       //Handle the help and information action
+       }*/
         return true;
     }
 

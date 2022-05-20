@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.music;
 
 import java.io.Serializable;
 

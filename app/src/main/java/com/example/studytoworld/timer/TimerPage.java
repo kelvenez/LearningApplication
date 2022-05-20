@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.timer;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.studytoworld.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

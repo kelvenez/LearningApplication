@@ -1,4 +1,4 @@
-package com.example.studytoworld;
+package com.example.studytoworld.chatRoom;
 
 import java.io.Serializable;
 

@@ -5,7 +5,7 @@
     android:id="@+id/englishDraw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EnglishStudyRoom"
+    tools:context=".StudyRoom.EnglishStudyRoom"
     tools:openDrawer="start">
 
 
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.59000003"
             app:rowCount="6"
-            tools:context=".ChineseStudyRoom">
+            tools:context=".StudyRoom.ChineseStudyRoom">
 
             <ImageButton
                 android:id="@+id/table0"

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,15 +11,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studytoworld.Achievement.AchievementActivity;
-import com.example.studytoworld.ChatRoomTitleActivity;
+import com.example.studytoworld.chatRoom.ChatRoomTitleActivity;
 import com.example.studytoworld.HelpAndInformation.HelpAndInformation;
 import com.example.studytoworld.Information.NearbyLibrary;
 import com.example.studytoworld.MainActivity;
-import com.example.studytoworld.MusicPlay;
+import com.example.studytoworld.music.MusicPlay;
 import com.example.studytoworld.R;
 import com.example.studytoworld.Schedule.LearningSchedule;
 import com.google.android.gms.tasks.OnFailureListener;
